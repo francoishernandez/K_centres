@@ -18,17 +18,18 @@ public class test {
 		Instance instanceDeTest = gen.generer(4, 1);
 		instanceDeTest.afficheText();
 
-		//2 choix : soit charger soit générer
+		//2 choix : soit charger soit gï¿½nï¿½rer
 
 		//algoDeTest.resoudre(instanceDeTest);
 		
 		ArrayList<Point> sol = new ArrayList<Point>();
-		sol.add(new Point(10,10));
-		sol.add(new Point(20,10));
+		sol.add(instanceDeTest.getPoints().get(1));
+		sol.add(instanceDeTest.getPoints().get(2));
 		
-		Solution solutionDeTest = new Solution(2,10,sol);
+		Solution solutionDeTest = new Solution(2,40,sol);
 		
 		solutionDeTest.afficheText();
+
 
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
@@ -47,6 +48,7 @@ public class test {
 		}
 
 		catch(Exception e){
+			System.err.println("Erreur a la creation de l'interface Swing.");
 			System.err.println(e);
 		}
 

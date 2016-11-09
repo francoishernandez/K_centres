@@ -4,9 +4,9 @@ import java.awt.*;
 import java.io.IOException;
 
 public class Fenetre extends JFrame {
-	
+
 	public Fenetre() throws IOException{
-	this.gui();
+		this.gui();
 	}
 
 	public void gui() throws IOException{
