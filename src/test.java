@@ -37,7 +37,7 @@ public class test {
 		}
 		
 		int rayon = t2;
-		//rayon = 100;
+		rayon = 20;
 		
 		System.out.println(rayon);
 		

@@ -56,6 +56,8 @@ public class Panel extends JPanel {
 
 		int r = sol.getRayon();
 		
+		//System.out.println(r);
+		
 		Color lightBlue = new Color(0,0,255,10);
 
 		for (int i = 0; i < k; i++){
@@ -64,8 +66,18 @@ public class Panel extends JPanel {
 			bufferGraphics.setColor(lightBlue);
 			bufferGraphics.fillOval((sol.getCentres().get(i).getX())*4-4*r,(sol.getCentres().get(i).getY())*4-4*r, r*8, r*8);
 			bufferGraphics.setColor(Color.BLUE);
-			bufferGraphics.drawOval((sol.getCentres().get(i).getX())*4-4*r,(sol.getCentres().get(i).getY())*4-4*r, r*8, r*8);
-
+			bufferGraphics.drawOval(((sol.getCentres().get(i).getX())*4)-(4*r),((sol.getCentres().get(i).getY())*4)-(4*r), r*8, r*8);
+			//int test = (sol.getCentres().get(i).getX()*4)-(2*r);
+			
+			/*
+			int rayonTest = 50;
+			
+			bufferGraphics.setColor(Color.RED);
+			bufferGraphics.drawOval(200 - rayonTest*2, 200 - rayonTest*2, 100, 100);
+			*/
+			
+			int test = r*4;
+			System.out.println(test);
 		}
 
 		g.drawImage(offscreen,0,0,this);
