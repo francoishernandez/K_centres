@@ -55,11 +55,16 @@ public class Panel extends JPanel {
 		int k = sol.getK();
 
 		int r = sol.getRayon();
+		
+		Color lightBlue = new Color(0,0,255,10);
 
 		for (int i = 0; i < k; i++){
 			bufferGraphics.setColor(Color.BLUE);
 			bufferGraphics.fillOval((sol.getCentres().get(i).getX()*4)-5,(sol.getCentres().get(i).getY()*4)-5, 10, 10);
-			bufferGraphics.drawOval((sol.getCentres().get(i).getX())*4-2*r,(sol.getCentres().get(i).getY())*4-2*r, r*4, r*4);
+			bufferGraphics.setColor(lightBlue);
+			bufferGraphics.fillOval((sol.getCentres().get(i).getX())*4-4*r,(sol.getCentres().get(i).getY())*4-4*r, r*8, r*8);
+			bufferGraphics.setColor(Color.BLUE);
+			bufferGraphics.drawOval((sol.getCentres().get(i).getX())*4-4*r,(sol.getCentres().get(i).getY())*4-4*r, r*8, r*8);
 
 		}
 

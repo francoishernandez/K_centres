@@ -23,7 +23,7 @@ public class Solution {
 	}
 	
 	String versStringCentres(){
-		String rep = new String(centres.get(1).versString());
+		String rep = new String(centres.get(0).versString());
 		for (int i = 1; i<k; i++){
 			rep = rep + ", " + centres.get(i).versString();
 		}

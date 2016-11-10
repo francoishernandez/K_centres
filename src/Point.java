@@ -24,7 +24,7 @@ public class Point {
 	
 	
 	int distance (Point aComparer){
-		return (int) Math.floor(Math.sqrt((x-aComparer.x)^2 + (y-aComparer.y^2)));
+		return (int) Math.floor(Math.sqrt(Math.pow(x-aComparer.getX(),2) + Math.pow(y-aComparer.getY(),2)));
 	}
 	
 	int distanceListe (ArrayList<Point> aComparer){
@@ -32,6 +32,7 @@ public class Point {
 		int rep = 0;
 		for (int i = 0; i<taille; i++){
 			int courant = this.distance(aComparer.get(i));
+			System.out.println(courant);
 			if (courant > rep) {
 				rep = courant;
 			}

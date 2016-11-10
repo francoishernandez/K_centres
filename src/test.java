@@ -21,13 +21,28 @@ public class test {
 		//2 choix : soit charger soit g�n�rer
 
 		//algoDeTest.resoudre(instanceDeTest);
-		
+
 		ArrayList<Point> sol = new ArrayList<Point>();
+		sol.add(instanceDeTest.getPoints().get(0));
 		sol.add(instanceDeTest.getPoints().get(1));
-		sol.add(instanceDeTest.getPoints().get(2));
+
+		int temp = 0;
+		int t2 = 0;
+		for (int i = 0; i<sol.size(); i++){
+			temp = sol.get(i).distanceListe(instanceDeTest.getPoints());
+			System.out.println(temp);
+			if (temp>t2){
+				t2 = temp;
+			}
+		}
 		
-		Solution solutionDeTest = new Solution(2,40,sol);
+		int rayon = t2;
+		//rayon = 100;
 		
+		System.out.println(rayon);
+		
+		Solution solutionDeTest = new Solution(sol.size(),rayon,sol);
+
 		solutionDeTest.afficheText();
 
 
