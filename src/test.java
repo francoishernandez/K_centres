@@ -11,12 +11,16 @@ public class test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Deuxapprox algoDeTest = new Deuxapprox(); 
-		Uniforme gen = new Uniforme();
+		Deuxapprox algoDeTest = new Deuxapprox();
+		
+		ArrayList<Point> centresClusters = new ArrayList<Point>();
+		centresClusters.add(new Point(30,30));
+		centresClusters.add(new Point(80,80));
+		Cluster gen = new Cluster(centresClusters);
 
 		//2 choix : soit charger soit generer
 		
-		Instance instanceDeTest = gen.generer(15, 5);
+		Instance instanceDeTest = gen.generer(51, 5);
 		instanceDeTest.afficheText();
 
 		
