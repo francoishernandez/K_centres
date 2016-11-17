@@ -37,6 +37,7 @@ public class Point {
 				rep = courant;
 			}
 		}
+		
 		return rep;
 	}
 	

@@ -36,7 +36,7 @@ public class Instance {
 		System.out.println("Nombre de centres : " + k);
 		System.out.println("Liste des points : " + versStringPoints());
 	}
-	
+	/*
 	void getFromFile(String name) throws FileNotFoundException{
 		FileReader fr = new FileReader(name);
 		BufferedReader br = new BufferedReader(fr);
@@ -51,6 +51,6 @@ public class Instance {
 		ArrayList<int> temp = new ArrayList<int>();
 		
 		
-	}
+	}*/
 	
 }

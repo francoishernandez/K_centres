@@ -14,10 +14,10 @@ public class test {
 		Deuxapprox algoDeTest = new Deuxapprox(); 
 		Uniforme gen = new Uniforme();
 
+		//2 choix : soit charger soit generer
+		
 		Instance instanceDeTest = gen.generer(15, 5);
 		instanceDeTest.afficheText();
-
-		//2 choix : soit charger soit g�n�rer
 
 		
 		Solution solutionDeTest = algoDeTest.resoudre(instanceDeTest);
