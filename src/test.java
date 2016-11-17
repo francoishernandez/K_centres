@@ -26,9 +26,6 @@ public class test {
 		sol.add(instanceDeTest.getPoints().get(0));
 		sol.add(instanceDeTest.getPoints().get(1));
 		
-		//ceci est un commentaire de test
-		//ceci est un deuxieme commentaire
-		
 		Solution solutionDeTest = new Solution(sol.size(),10,sol);
 
 		solutionDeTest.afficheText();
