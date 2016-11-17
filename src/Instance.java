@@ -37,20 +37,4 @@ public class Instance {
 		System.out.println("Liste des points : " + versStringPoints());
 	}
 	
-	void getFromFile(String name) throws FileNotFoundException{
-		FileReader fr = new FileReader(name);
-		BufferedReader br = new BufferedReader(fr);
-		
-		String line = br.readLine();
-		
-		int nbInstances = 
-		
-		
-		String[] strs = line.trim().split(", ");
-		
-		ArrayList<int> temp = new ArrayList<int>();
-		
-		
-	}
-	
 }
