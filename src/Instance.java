@@ -17,6 +17,10 @@ public class Instance {
 		return n;
 	}
 	
+	int getK(){
+		return k;
+	}
+	
 	Instance(int n, int k, ArrayList<Point> points){
 		this.n = n;
 		this.k = k;
