@@ -16,7 +16,7 @@ public class Recuperer extends Generateur {
 	}
 
 	ArrayList<Instance> getFromFile(String name) throws IOException{
-		FileReader fr = new FileReader("instances/"+name);
+		FileReader fr = new FileReader("instances/"+name+".txt");
 		BufferedReader br = new BufferedReader(fr);
 
 		String firstline = br.readLine();
