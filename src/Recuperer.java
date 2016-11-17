@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -56,9 +57,19 @@ public class Recuperer extends Generateur {
 		return instances;
 
 	}
-	
-	void createFile(ArrayList<Instance> instances){
-		
+
+	void createFile(String name, ArrayList<Instance> instances) throws IOException{
+		int nbTests = instances.size();
+		FileWriter fw = new FileWriter("instances/"+name+".txt");
+		fw.write(nbTests+"\n"+"\n");
+		for (int i = 0; i<nbTests; i++){
+			int nbI = instances.get(i).getN();
+			int nbC = instances.get(i).getK();
+			fw.write(nbI+","+nbC+"\n");
+			fw.write(instances.get(i).versStringPoints()+"\n"+"\n");
+		}
+		fw.flush();
+		fw.close();
 	}
 
 }
