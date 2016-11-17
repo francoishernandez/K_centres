@@ -11,22 +11,16 @@ public class test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		//algoDeTest = new XXX; //choix de l'algo
-
+		Deuxapprox algoDeTest = new Deuxapprox(); 
 		Uniforme gen = new Uniforme();
 
-		Instance instanceDeTest = gen.generer(4, 1);
+		Instance instanceDeTest = gen.generer(15, 5);
 		instanceDeTest.afficheText();
 
 		//2 choix : soit charger soit g�n�rer
 
-		//algoDeTest.resoudre(instanceDeTest);
-
-		ArrayList<Point> sol = new ArrayList<Point>();
-		sol.add(instanceDeTest.getPoints().get(0));
-		sol.add(instanceDeTest.getPoints().get(1));
 		
-		Solution solutionDeTest = new Solution(sol.size(),10,sol);
+		Solution solutionDeTest = algoDeTest.resoudre(instanceDeTest);
 
 		solutionDeTest.afficheText();
 

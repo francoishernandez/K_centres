@@ -27,13 +27,13 @@ public class Point {
 		return (int) Math.floor(Math.sqrt(Math.pow(x-aComparer.getX(),2) + Math.pow(y-aComparer.getY(),2)));
 	}
 	
-	int distanceListe (ArrayList<Point> aComparer){
+	int distanceMinListe (ArrayList<Point> aComparer){
 		int taille = aComparer.size();
-		int rep = 0;
+		int rep = Integer.MAX_VALUE;
 		for (int i = 0; i<taille; i++){
 			int courant = this.distance(aComparer.get(i));
-			System.out.println(courant);
-			if (courant > rep) {
+			//System.out.println(courant);
+			if (courant < rep) {
 				rep = courant;
 			}
 		}
