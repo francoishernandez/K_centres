@@ -4,24 +4,40 @@ public class Deuxapprox extends Algo {
 
 	Solution resoudre(Instance I) {
 		
-		/*ArrayList<Point> Sol = new ArrayList<Point>();
+		ArrayList<Point> Sol = new ArrayList<Point>();
 		ArrayList<Point> pointsAtraiter = new ArrayList<Point>(I.points);
-		Point pointInitial = pointsAtraiter.pop();
+		Point pointInitial = pointsAtraiter.remove(0);
 		Sol.add(pointInitial);
 		
 		for (int i = 1; i<I.k; i++){
-			for (int j = 1; j<I.k; i++){
-			Point plusloin = new Point(pointsAtraiter.get(1));
-			
-			Sol.add(plusloin);
+			int distanceMax = 0;
+			int indiceMax = 0;
+			for (int j = 0; j<pointsAtraiter.size(); j++){
+				int distanceJ = pointsAtraiter.get(j).distanceMinListe(Sol);
+				if ( distanceJ > distanceMax ) {
+					distanceMax = distanceJ;
+					indiceMax = j;
+				}
+			}
+			Point plusLoin = pointsAtraiter.remove(indiceMax);
+			Sol.add(plusLoin);
 		}
 		
-		int poids = 0;
-		Solution rep = new Solution (I.k,poids,Sol);
+		//Calcul du rayon :
 		
-		*/
-		return null;
+		int rayon = 0;
+		for (int j = 0; j<pointsAtraiter.size(); j++){
+			int distanceJ = pointsAtraiter.get(j).distanceMinListe(Sol);
+			if ( distanceJ > rayon ) {
+				rayon = distanceJ;
+			}
+		}
+		
+		
+		Solution rep = new Solution (I.k,rayon,Sol);
+		return rep;
 	}
 
+	
 }
 

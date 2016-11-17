@@ -24,7 +24,7 @@ public class Instance {
 	}
 
 	String versStringPoints(){
-		String rep = new String(points.get(1).versString());
+		String rep = new String(points.get(0).versString());
 		for (int i = 1; i<n; i++){
 			rep = rep + ", " + points.get(i).versString();
 		}
@@ -36,5 +36,6 @@ public class Instance {
 		System.out.println("Nombre de centres : " + k);
 		System.out.println("Liste des points : " + versStringPoints());
 	}
+
 	
 }
