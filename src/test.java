@@ -8,22 +8,34 @@ public class test {
 
 	private static Fenetre f;
 	private static Panel pan;
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
 		Deuxapprox algoDeTest = new Deuxapprox();
-		
+
 		ArrayList<Point> centresClusters = new ArrayList<Point>();
 		centresClusters.add(new Point(30,30));
 		centresClusters.add(new Point(80,80));
 		Cluster gen = new Cluster(centresClusters);
 
 		//2 choix : soit charger soit generer
-		
+
 		Instance instanceDeTest = gen.generer(51, 5);
 		instanceDeTest.afficheText();
 
-		
+		Recuperer test = new Recuperer();
+
+		ArrayList<Instance> instances = new ArrayList<Instance>();
+		instances.add(instanceDeTest);
+		instances.add(instanceDeTest);
+
+		test.createFile("test", instances);
+		ArrayList<Instance> instancesRecup = test.getFromFile("test");
+		for (int i=0; i< instancesRecup.size(); i++){
+			instancesRecup.get(i).afficheText();
+		}
+
+
 		Solution solutionDeTest = algoDeTest.resoudre(instanceDeTest);
 
 		solutionDeTest.afficheText();
