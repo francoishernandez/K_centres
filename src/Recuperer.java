@@ -40,13 +40,10 @@ public class Recuperer extends Generateur {
 			int b[] = new int[integersInString.length];
 			for (int j = 0; j< integersInString.length; j++){
 				b[j] = Integer.parseInt(integersInString[j]);
-				System.out.println(b[j]);
 			}
 			ArrayList<Point> points = new ArrayList<Point>();
 			for (int k = 0; k<b.length; k=k+2){
 				Point p = new Point(b[k],b[k+1]);
-				System.out.println(b[k]);
-				System.out.println(b[k+1]);
 				points.add(p);
 			}
 			Instance instance = new Instance(a[0],a[1],points);
