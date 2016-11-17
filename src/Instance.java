@@ -30,7 +30,7 @@ public class Instance {
 	String versStringPoints(){
 		String rep = new String(points.get(0).versString());
 		for (int i = 1; i<n; i++){
-			rep = rep + ", " + points.get(i).versString();
+			rep = rep + "," + points.get(i).versString();
 		}
 		return rep;
 	}
