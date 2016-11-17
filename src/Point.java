@@ -18,7 +18,7 @@ public class Point {
 	}
 	
 	String versString(){
-		String rep = new String(x + ", " + y);
+		String rep = new String(x + "," + y);
 		return rep;
 	}
 	
