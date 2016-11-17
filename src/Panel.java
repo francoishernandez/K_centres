@@ -77,7 +77,7 @@ public class Panel extends JPanel {
 			*/
 			
 			int test = r*4;
-			System.out.println(test);
+			//System.out.println(test);
 		}
 
 		g.drawImage(offscreen,0,0,this);

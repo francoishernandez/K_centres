@@ -25,23 +25,8 @@ public class test {
 		ArrayList<Point> sol = new ArrayList<Point>();
 		sol.add(instanceDeTest.getPoints().get(0));
 		sol.add(instanceDeTest.getPoints().get(1));
-
-		int temp = 0;
-		int t2 = 0;
-		for (int i = 0; i<sol.size(); i++){
-			temp = sol.get(i).distanceListe(instanceDeTest.getPoints());
-			System.out.println(temp);
-			if (temp>t2){
-				t2 = temp;
-			}
-		}
 		
-		int rayon = t2;
-		rayon = 20;
-		
-		System.out.println(rayon);
-		
-		Solution solutionDeTest = new Solution(sol.size(),rayon,sol);
+		Solution solutionDeTest = new Solution(sol.size(),10,sol);
 
 		solutionDeTest.afficheText();
 
