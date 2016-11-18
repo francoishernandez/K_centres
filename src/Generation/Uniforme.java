@@ -1,9 +1,6 @@
 package Generation;
 import java.util.ArrayList;
-
-import Main.Instance;
-import Main.Main;
-import Main.Point;
+import Main.*;
 
 public class Uniforme extends Generateur {
 

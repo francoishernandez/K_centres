@@ -1,5 +1,5 @@
 package Generation;
-import Main.Instance;
+import Main.*;
 
 public abstract class Generateur {
 

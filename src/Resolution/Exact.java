@@ -1,7 +1,6 @@
 package Resolution;
-
-import Main.Instance;
-import Main.Solution;
+import java.util.ArrayList;
+import Main.*;
 
 public class Exact extends Algo {
 
@@ -10,4 +9,8 @@ public class Exact extends Algo {
 		return null;
 	}
 
+	void appelRec(ArrayList<Point> pointsAvisiter){
+		
+	}
+	
 }

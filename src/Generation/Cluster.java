@@ -1,10 +1,7 @@
 package Generation;
 import java.util.ArrayList;
 import java.util.Random;
-
-import Main.Instance;
-import Main.Point;
-import Main.Main;
+import Main.*;
 
 public class Cluster extends Generateur {
 

@@ -1,9 +1,6 @@
 package Resolution;
 import java.util.ArrayList;
-
-import Main.Instance;
-import Main.Point;
-import Main.Solution;
+import Main.*;
 
 public class Deuxapprox extends Algo {
 

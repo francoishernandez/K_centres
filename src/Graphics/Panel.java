@@ -1,11 +1,8 @@
 package Graphics;
 import javax.swing.*;
-
-import Main.Instance;
-import Main.Main;
-import Main.Solution;
-
 import java.awt.*;
+
+import Main.*;
 
 public class Panel extends JPanel {
 

@@ -1,14 +1,10 @@
 package Main;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.swing.SwingUtilities;
-
-import Generation.Cluster;
-import Generation.Recuperer;
-import Graphics.Fenetre;
-import Graphics.Panel;
-import Resolution.Deuxapprox;
+import Generation.*;
+import Graphics.*;
+import Resolution.*;
 
 public class Main {
 

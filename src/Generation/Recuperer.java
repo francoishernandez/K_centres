@@ -4,9 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import Main.Instance;
-import Main.Point;
+import Main.*;
 
 public class Recuperer extends Generateur {
 

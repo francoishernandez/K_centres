@@ -1,7 +1,6 @@
 package Resolution;
 
-import Main.Instance;
-import Main.Solution;
+import Main.*;
 
 public abstract class Algo {
 	public abstract Solution resoudre(Instance a);

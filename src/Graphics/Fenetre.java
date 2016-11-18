@@ -2,7 +2,7 @@ package Graphics;
 
 import java.awt.Dimension;
 import java.io.IOException;
-import Main.Main;
+import Main.*;
 import javax.swing.JFrame;
 
 public class Fenetre extends JFrame {
