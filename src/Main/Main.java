@@ -27,9 +27,9 @@ public class Main {
 		Deuxapprox algoDeTest = new Deuxapprox();
 
 		//CHOIX GENERATION DU PROBLEME
-		Cluster gen = new Cluster(200, 10);
+		Cluster gen = new Cluster(2, 30);
 		
-		Instance instanceDeTest = gen.generer(10000, 20);
+		Instance instanceDeTest = gen.generer(1000, 2);
 		instanceDeTest.afficheText();
 
 		Recuperer test = new Recuperer();

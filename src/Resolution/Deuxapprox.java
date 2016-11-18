@@ -28,18 +28,8 @@ public class Deuxapprox extends Algo {
 			Sol.add(plusLoin);
 		}
 		
-		//Calcul du rayon :
-		
-		int rayon = 0;
-		for (int j = 0; j<pointsAtraiter.size(); j++){
-			int distanceJ = pointsAtraiter.get(j).distanceMinListe(Sol);
-			if ( distanceJ > rayon ) {
-				rayon = distanceJ;
-			}
-		}
-		
-		
-		Solution rep = new Solution (I.getK(),rayon,Sol);
+		int rayon = I.calculRayon(Sol);
+		Solution rep = new Solution (rayon,Sol);
 		return rep;
 	}
 

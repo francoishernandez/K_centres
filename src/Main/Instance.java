@@ -26,6 +26,17 @@ public class Instance {
 		this.k = k;
 		this.points = points;
 	}
+	
+	public int calculRayon(ArrayList<Point> centres){
+		int rep = 0;
+		for (int j = 0; j<n; j++){
+			int distanceJ = points.get(j).distanceMinListe(centres);
+			if ( distanceJ > rep ) {
+				rep = distanceJ;
+			}
+		}
+		return rep;
+	}
 
 	public String versStringPoints(){
 		String rep = new String(points.get(0).versString());

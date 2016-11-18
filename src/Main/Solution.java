@@ -3,12 +3,11 @@ import java.util.ArrayList;
 
 public class Solution {
 
-	int k;
 	int rayon;
 	ArrayList<Point> centres;
 	
 	public int getK(){
-		return k;
+		return centres.size();
 	}
 	public int getRayon(){
 		return rayon;
@@ -17,15 +16,14 @@ public class Solution {
 		return centres;
 	}
 	
-	public Solution(int k, int rayon, ArrayList<Point> centres){
-		this.k = k;
+	public Solution(int rayon, ArrayList<Point> centres){
 		this.rayon = rayon;
 		this.centres = centres;
 	}
 	
 	public String versStringCentres(){
 		String rep = new String(centres.get(0).versString());
-		for (int i = 1; i<k; i++){
+		for (int i = 1; i<centres.size(); i++){
 			rep = rep + ", " + centres.get(i).versString();
 		}
 		return rep;
@@ -33,7 +31,7 @@ public class Solution {
 	
 	public void afficheText(){
 		System.out.println("Solution de rayon : " + rayon);
-		System.out.println("Liste des " + k + " centres : " + versStringCentres());
+		System.out.println("Liste des " + centres.size() + " centres : " + versStringCentres());
 	}
 	
 }
