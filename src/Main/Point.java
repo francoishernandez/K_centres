@@ -1,3 +1,4 @@
+package Main;
 import java.util.ArrayList;
 
 public class Point {
@@ -5,29 +6,29 @@ public class Point {
 	int x;
 	int y;
 	
-	Point(int x, int y){
+	public Point(int x, int y){
 		this.x = x;
 		this.y = y;
 	}
 	
-	int getX(){
+	public int getX(){
 		return x;
 	}
-	int getY(){
+	public int getY(){
 		return y;
 	}
 	
-	String versString(){
+	public String versString(){
 		String rep = new String(x + "," + y);
 		return rep;
 	}
 	
 	
-	int distance (Point aComparer){
-		return (int) Math.floor(Math.sqrt(Math.pow(x-aComparer.getX(),2) + Math.pow(y-aComparer.getY(),2)));
+	public int distance (Point aComparer){
+		return (int) Math.ceil(Math.sqrt(Math.pow(x-aComparer.getX(),2) + Math.pow(y-aComparer.getY(),2)));
 	}
 	
-	int distanceMinListe (ArrayList<Point> aComparer){
+	public int distanceMinListe (ArrayList<Point> aComparer){
 		int taille = aComparer.size();
 		int rep = Integer.MAX_VALUE;
 		for (int i = 0; i<taille; i++){

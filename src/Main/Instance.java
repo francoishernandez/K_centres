@@ -1,3 +1,4 @@
+package Main;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,24 +11,23 @@ public class Instance {
 	int k;
 	ArrayList<Point> points;
 
-	ArrayList<Point> getPoints(){
+	public ArrayList<Point> getPoints(){
 		return points;
 	}
-	int getN(){
+	public int getN(){
 		return n;
 	}
-	
-	int getK(){
+	public int getK(){
 		return k;
 	}
 	
-	Instance(int n, int k, ArrayList<Point> points){
+	public Instance(int n, int k, ArrayList<Point> points){
 		this.n = n;
 		this.k = k;
 		this.points = points;
 	}
 
-	String versStringPoints(){
+	public String versStringPoints(){
 		String rep = new String(points.get(0).versString());
 		for (int i = 1; i<n; i++){
 			rep = rep + "," + points.get(i).versString();
@@ -35,7 +35,7 @@ public class Instance {
 		return rep;
 	}
 	
-	void afficheText(){
+	public void afficheText(){
 		System.out.println("Nombre de points : " + n);
 		System.out.println("Nombre de centres : " + k);
 		System.out.println("Liste des points : " + versStringPoints());

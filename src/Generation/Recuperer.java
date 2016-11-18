@@ -1,21 +1,24 @@
+package Generation;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import Main.Instance;
+import Main.Point;
+
 public class Recuperer extends Generateur {
 
-	Recuperer(){}
+	public Recuperer(){}
 
 	@Override
-	Instance generer(int n, int k) {
+	public Instance generer(int n, int k) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	ArrayList<Instance> getFromFile(String name) throws IOException{
+	public ArrayList<Instance> getFromFile(String name) throws IOException{
 		FileReader fr = new FileReader("instances/"+name+".txt");
 		BufferedReader br = new BufferedReader(fr);
 
@@ -55,7 +58,7 @@ public class Recuperer extends Generateur {
 
 	}
 
-	void createFile(String name, ArrayList<Instance> instances) throws IOException{
+	public void createFile(String name, ArrayList<Instance> instances) throws IOException{
 		int nbTests = instances.size();
 		FileWriter fw = new FileWriter("instances/"+name+".txt");
 		fw.write(nbTests+"\n"+"\n");

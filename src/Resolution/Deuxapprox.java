@@ -1,15 +1,20 @@
+package Resolution;
 import java.util.ArrayList;
+
+import Main.Instance;
+import Main.Point;
+import Main.Solution;
 
 public class Deuxapprox extends Algo {
 
-	Solution resoudre(Instance I) {
+	public Solution resoudre(Instance I) {
 		
 		ArrayList<Point> Sol = new ArrayList<Point>();
-		ArrayList<Point> pointsAtraiter = new ArrayList<Point>(I.points);
+		ArrayList<Point> pointsAtraiter = new ArrayList<Point>(I.getPoints());
 		Point pointInitial = pointsAtraiter.remove(0);
 		Sol.add(pointInitial);
 		
-		for (int i = 1; i<I.k; i++){
+		for (int i = 1; i<I.getK(); i++){
 			int distanceMax = 0;
 			int indiceMax = 0;
 			for (int j = 0; j<pointsAtraiter.size(); j++){
@@ -34,7 +39,7 @@ public class Deuxapprox extends Algo {
 		}
 		
 		
-		Solution rep = new Solution (I.k,rayon,Sol);
+		Solution rep = new Solution (I.getK(),rayon,Sol);
 		return rep;
 	}
 

@@ -1,26 +1,35 @@
-
+package Main;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
 
-public class test {
+import Generation.Cluster;
+import Generation.Recuperer;
+import Graphics.Fenetre;
+import Graphics.Panel;
+import Resolution.Deuxapprox;
+
+public class Main {
 
 	private static Fenetre f;
 	private static Panel pan;
+	public static int resPx = 700; //resolution des calculs en px
+	public static int tailleFen = 700; //resolution des calculs en px
+	// on doit avoir tailleFen > resPx
+	public static int marges = 20; //marges pour affichage
+	
+	
+	
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 
+		//CHOIX ALGO DE RESOLUTION
 		Deuxapprox algoDeTest = new Deuxapprox();
 
-		ArrayList<Point> centresClusters = new ArrayList<Point>();
-		centresClusters.add(new Point(30,30));
-		centresClusters.add(new Point(80,80));
-		Cluster gen = new Cluster(centresClusters);
-
-		//2 choix : soit charger soit generer
-
-		Instance instanceDeTest = gen.generer(51, 5);
+		//CHOIX GENERATION DU PROBLEME
+		Cluster gen = new Cluster(200, 10);
+		
+		Instance instanceDeTest = gen.generer(10000, 20);
 		instanceDeTest.afficheText();
 
 		Recuperer test = new Recuperer();

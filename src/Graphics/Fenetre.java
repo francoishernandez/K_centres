@@ -1,7 +1,9 @@
+package Graphics;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
 import java.io.IOException;
+import Main.Main;
+import javax.swing.JFrame;
 
 public class Fenetre extends JFrame {
 
@@ -14,7 +16,7 @@ public class Fenetre extends JFrame {
 		this.setTitle("Instances");
 
 		this.setVisible(true);
-		this.setPreferredSize(new Dimension(400,422));
+		this.setPreferredSize(new Dimension(Main.tailleFen,Main.tailleFen+22));
 
 		this.setResizable(false);
 
