@@ -13,19 +13,21 @@ public class Main {
 	public static int resPx = 700; //resolution des calculs en px
 	public static int tailleFen = 700; //resolution des calculs en px
 	// on doit avoir tailleFen > resPx
-	public static int marges = 20; //marges pour affichage
+	public static int marges = 50; //marges pour affichage
 	
 	
 	
 	public static void main(String[] args) throws IOException {
 
 		//CHOIX ALGO DE RESOLUTION
-		Deuxapprox algoDeTest = new Deuxapprox();
-
-		//CHOIX GENERATION DU PROBLEME
-		Cluster gen = new Cluster(2, 30);
+		//Deuxapprox algoDeTest = new Deuxapprox();
+		Exact algoDeTest = new Exact();
 		
-		Instance instanceDeTest = gen.generer(1000, 2);
+		//CHOIX GENERATION DU PROBLEME
+		//Cluster gen = new Cluster(20, 20);
+		Uniforme gen = new Uniforme();
+		
+		Instance instanceDeTest = gen.generer(50, 4);
 		instanceDeTest.afficheText();
 
 		Recuperer test = new Recuperer();

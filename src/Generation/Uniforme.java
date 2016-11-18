@@ -4,7 +4,7 @@ import Main.*;
 
 public class Uniforme extends Generateur {
 
-	Uniforme(){};
+	public Uniforme(){};
 	
 	public Instance generer(int n, int k) {
 		ArrayList<Point> points = new ArrayList<Point>(); 
