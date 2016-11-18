@@ -2,7 +2,7 @@ package Resolution;
 import java.util.ArrayList;
 import Main.*;
 
-public class Deuxapprox extends Algo {
+public class DeuxApprox extends Algo {
 
 	public Solution resoudre(Instance I) {
 		
