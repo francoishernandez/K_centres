@@ -19,17 +19,18 @@ public class Main {
 		
 		//CHOIX ALGO DE RESOLUTION
 		//DeuxApprox algoDeTest = new DeuxApprox();
-		Exact algoDeTest = new Exact();
+		Descente algoDeTest = new Descente();
+		//Exact algoDeTest = new Exact();
 		
 		//CHOIX GENERATION DU PROBLEME
-		//Cluster gen = new Cluster(20, 20);
+		//Cluster gen = new Cluster(30, 15);
 		Uniforme gen = new Uniforme();
 		
 		//CHOIX DU NOMBRE DE NOEUDS
-		int nbNoeuds = 40;
+		int nbNoeuds = 100;
 		
 		//CHOIX DU NOMBRE DE CENTRES
-		int k = 4;
+		int k = 10;
 		
 		
 		// ----------------------------------------
