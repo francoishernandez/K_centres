@@ -36,6 +36,7 @@ public class Main {
 		// ----------------------------------------
 		
 		
+		// Initialisation de l'instance
 		Instance instanceDeTest = gen.generer(nbNoeuds, k);
 		instanceDeTest.afficheText();
 
@@ -51,15 +52,20 @@ public class Main {
 			instancesRecup.get(i).afficheText();
 		}
 
+		// Timer pour temps d'éxécution
 		long t1 = System.currentTimeMillis();
 
+		// Résolution
 		Solution solutionDeTest = algoDeTest.resoudre(instanceDeTest);
 		solutionDeTest.afficheText();
 
+		// Affichage temps d'éxecution
 		long t2 = System.currentTimeMillis();
 		float secondes = (float)(t2-t1)/1000;
 		System.out.println("Temps d'éxecution : " + secondes + " secondes.");
 
+		
+		// Affichage du graphe
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
 				public void run() {
@@ -83,8 +89,6 @@ public class Main {
 
 	}
 }
-
-//AFFICHAGE DANS LE MAIN
 
 
 
