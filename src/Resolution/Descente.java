@@ -4,12 +4,20 @@ import java.util.ArrayList;
 
 import Main.*;
 
-public class Descente {
-
+public class Descente extends Algo {
+	
+	// Cet algo à pour objectif d'amélioration des solutions déjà existantes, et est donc compilé à un autre algo de résolution.
+	
+	private Algo initialisation;
+	
+	public Descente(Algo initialisation){
+		this.initialisation = initialisation;
+	}
+	
 	public Solution resoudre(Instance I) {
 		
-		DeuxApprox init = new DeuxApprox();
-		Solution solInit = init.resoudre(I);
+		// On commence par résoudre le problème avec l'algo d'initialisation
+		Solution solInit = initialisation.resoudre(I);
 		int k = I.getK();
 		int n = I.getN();
 		ArrayList<Point> points = I.getPoints();

@@ -19,7 +19,7 @@ public class Main {
 		
 		//CHOIX ALGO DE RESOLUTION
 		//DeuxApprox algoDeTest = new DeuxApprox();
-		Descente algoDeTest = new Descente();
+		Descente algoDeTest = new Descente(new DeuxApprox());
 		//Exact algoDeTest = new Exact();
 		
 		//CHOIX GENERATION DU PROBLEME
@@ -40,6 +40,8 @@ public class Main {
 		Instance instanceDeTest = gen.generer(nbNoeuds, k);
 		instanceDeTest.afficheText();
 
+		
+		/*
 		Recuperer test = new Recuperer();
 
 		ArrayList<Instance> instances = new ArrayList<Instance>();
@@ -51,6 +53,7 @@ public class Main {
 		for (int i=0; i< instancesRecup.size(); i++){
 			instancesRecup.get(i).afficheText();
 		}
+		*/
 
 		// Timer pour temps d'éxécution
 		long t1 = System.currentTimeMillis();

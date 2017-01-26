@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import Main.*;
 
-public class Recuperer extends Generateur {
+public class Importer extends Generateur {
 
-	public Recuperer(){}
+	public Importer(){}
 
 	@Override
 	public Instance generer(int n, int k) {
