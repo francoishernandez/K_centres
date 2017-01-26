@@ -17,43 +17,41 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 
 		
-		//CHOIX ALGO DE RESOLUTION
+		// CHOIX ALGO DE RESOLUTION
+		
 		//DeuxApprox algoDeTest = new DeuxApprox();
 		Descente algoDeTest = new Descente(new DeuxApprox());
 		//Exact algoDeTest = new Exact();
 		
-		//CHOIX GENERATION DU PROBLEME
-		//Cluster gen = new Cluster(30, 15);
-		Uniforme gen = new Uniforme();
+		// CHOIX DU NOMBRE DE NOEUDS
+		int nbNoeuds = 1000;
 		
-		//CHOIX DU NOMBRE DE NOEUDS
-		int nbNoeuds = 100;
+		// CHOIX DU NOMBRE DE CENTRES
+		int k = 20;
 		
-		//CHOIX DU NOMBRE DE CENTRES
-		int k = 10;
+		// CHOIX GENERATION DU PROBLEME 
+		
+		Cluster gen = new Cluster(30, 15); // (NbClusters, tailleClusters)
+		//Uniforme gen = new Uniforme();
+		//Importer gen = new Importer("test", 0); // (nomFichier, numéro de l'instance à charger dans ce fichier) Ne prends pas en compte les choix de nb de noeuds et de centres.
+		
+		// SAUVEGARDE DE L'INSTANCE
+		boolean sauvegarde = true;
+		String nomSauvegarde = new String("clusters");
+		
 		
 		
 		// ----------------------------------------
 		
 		
+		
 		// Initialisation de l'instance
 		Instance instanceDeTest = gen.generer(nbNoeuds, k);
-		instanceDeTest.afficheText();
-
 		
-		/*
-		Recuperer test = new Recuperer();
-
-		ArrayList<Instance> instances = new ArrayList<Instance>();
-		instances.add(instanceDeTest);
-		instances.add(instanceDeTest);
-
-		test.createFile("test", instances);
-		ArrayList<Instance> instancesRecup = test.getFromFile("test");
-		for (int i=0; i< instancesRecup.size(); i++){
-			instancesRecup.get(i).afficheText();
+		// Sauvegarde de l'instance
+		if (sauvegarde){
+			instanceDeTest.createFile(nomSauvegarde);
 		}
-		*/
 
 		// Timer pour temps d'éxécution
 		long t1 = System.currentTimeMillis();
