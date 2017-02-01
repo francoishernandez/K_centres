@@ -6,14 +6,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 import Main.*;
 
-public class Recuperer extends Generateur {
+public class Importer extends Generateur {
 
-	public Recuperer(){}
+	public Importer(){}
+	
+	String nomFichier;
+	int numeroInstance;
 
 	@Override
-	public Instance generer(int n, int k) {
-		// TODO Auto-generated method stub
-		return null;
+	public Instance generer(int n, int k){
+		try {
+		ArrayList<Instance> instancesRecup = this.getFromFile(nomFichier);
+		return instancesRecup.get(numeroInstance);
+		} 
+		catch(Exception e){
+			System.err.println("Erreur à l'import des instances.");
+			System.err.println(e);
+			return null;
+		}
+	}
+	
+	public Importer(String nomFichier, int numeroInstance){
+		this.nomFichier = nomFichier;
+		this.numeroInstance = numeroInstance;
 	}
 
 	public ArrayList<Instance> getFromFile(String name) throws IOException{
@@ -56,18 +71,5 @@ public class Recuperer extends Generateur {
 
 	}
 
-	public void createFile(String name, ArrayList<Instance> instances) throws IOException{
-		int nbTests = instances.size();
-		FileWriter fw = new FileWriter("instances/"+name+".txt");
-		fw.write(nbTests+"\n"+"\n");
-		for (int i = 0; i<nbTests; i++){
-			int nbI = instances.get(i).getN();
-			int nbC = instances.get(i).getK();
-			fw.write(nbI+","+nbC+"\n");
-			fw.write(instances.get(i).versStringPoints()+"\n"+"\n");
-		}
-		fw.flush();
-		fw.close();
-	}
 
 }

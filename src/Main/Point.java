@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Point {
 
+	// Coordonnées
 	int x;
 	int y;
 	
@@ -18,16 +19,19 @@ public class Point {
 		return y;
 	}
 	
+	// Pour affichage et export
 	public String versString(){
 		String rep = new String(x + "," + y);
 		return rep;
 	}
 	
 	
+	// Distance du point courant au point aComparer
 	public int distance (Point aComparer){
 		return (int) Math.ceil(Math.sqrt(Math.pow(x-aComparer.getX(),2) + Math.pow(y-aComparer.getY(),2)));
 	}
 	
+	// Distance minimale du point courant à une liste de points aComparer
 	public int distanceMinListe (ArrayList<Point> aComparer){
 		int taille = aComparer.size();
 		int rep = Integer.MAX_VALUE;
