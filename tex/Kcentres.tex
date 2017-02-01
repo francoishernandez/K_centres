@@ -1,0 +1,370 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thin Sectioned Essay
+% LaTeX Template
+% Version 1.0 (3/8/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original Author:
+% Nicolas Diaz (nsdiaz@uc.cl) with extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage{standalone}
+
+\usepackage[a4paper,left=3cm,right=3cm]{geometry}
+
+\usepackage{indentfirst}
+%\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{color}
+
+\usepackage{enumerate}
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows}
+\usepackage{tkz-graph}
+\usetikzlibrary{shapes.multipart}
+
+\renewcommand{\thesection}{\Roman{section}}
+\usepackage{titlesec}
+%\titlespacing\section{0pt}{20pt plus 4pt minus 2pt}{-5pt plus 2pt minus 2pt}
+
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\lstset{
+language=Java,
+basicstyle=\normalsize, % ou \c ca==> basicstyle=\scriptsize,
+upquote=true,
+aboveskip={1.2\baselineskip},
+columns=fullflexible,
+showstringspaces=false,
+extendedchars=true,
+breaklines=true,
+showtabs=false,
+showspaces=false,
+showstringspaces=false,
+identifierstyle=\ttfamily,
+keywordstyle=\color[rgb]{0,0,1},
+commentstyle=\color[rgb]{0.133,0.545,0.133},
+stringstyle=\color[rgb]{0.627,0.126,0.941},
+}
+
+\lstset{% This applies to ALL lstlisting
+    backgroundcolor=\color{yellow!10},%
+    numbers=left, numberstyle=\tiny, stepnumber=2, numbersep=5pt,%
+    }%
+
+% Applies only when you use it
+\lstdefinestyle{MyLang}{
+    basicstyle=\small\ttfamily\color{magenta},%
+    breaklines=true,%                                      allow line breaks
+    moredelim=[s][\color{green!50!black}\ttfamily]{'}{'},% single quotes in green
+    moredelim=*[s][\color{black}\ttfamily]{options}{\}},%  options in black (until trailing })
+    commentstyle={\color{gray}\itshape},%                  gray italics for comments
+    morecomment=[l]{//},%                                  define // comment
+    emph={%
+        STRING%                                            literal strings listed here
+        },emphstyle={\color{blue}\ttfamily},%              and formatted in blue
+    alsoletter={:,|,;},%
+    morekeywords={:,|,;},%                                 define the special characters
+    keywordstyle={\color{black}},%                         and format them in black
+}
+
+\lstdefinestyle{Pyth}{
+	language=Python
+}
+
+
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{50pt} % Some vertical space between the title and author name
+
+{\large\@author} % Author name
+\\\@date % Date
+
+\vspace{-20pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Théorie de la complexité des algorithmes}\\ % Title
+Problème des K-centres} % Subtitle
+
+\author{\textsc{Fran\c cois Hernandez - L\'eo Pons} % Author
+\\{\textit{CentraleSup\'elec}}} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\pagebreak
+\tableofcontents
+
+\pagebreak
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT AND KEYWORDS
+%----------------------------------------------------------------------------------------
+
+%\renewcommand{\abstractname}{Summary} % Uncomment to change the name of the abstract to something else
+
+
+
+\vspace{30pt} % Some vertical space between the abstract and first section
+
+%----------------------------------------------------------------------------------------
+%	ESSAY BODY
+%----------------------------------------------------------------------------------------
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+Un Système Multi-Agents est un système composé d'un ensemble d'agents, situés dans un certain environnement et interagissant selon certaines relations. Un agent est une entité caractérisée par le fait qu'elle est, au moins partiellement, autonome. Le fonctionnement du système est défini par le fonctionnement des agents, le système central ne fait qu'office d'environnement d'évolution et de communication des différents agents. On parle d'intelligence artificielle distribuée.\\
+
+Ce TD a pour objectif de construire une plateforme générique permettant de représenter et simuler des systèmes multi-agents de différentes natures. Un premier SMA simulé sera celui du dîner des philosophes.\\
+
+Le problème des philosophes peut être défini de différentes manières, mais l'idée générale est toujours la même.\\
+
+La situation est la suivante :
+\begin{itemize}
+\item Un certain nombre de philosophes se trouvent autour d'une table.
+\item Chacun des philosophes a devant lui un plat de spaghetti.
+\item À gauche de chaque plat de spaghetti se trouve une fourchette.
+\end{itemize}
+
+Un philosophe a un certain nombre d'états possibles, par exemple :
+
+\begin{itemize}
+\item Il peut penser, ce qui lui donne faim.
+\item Il peut être dans un état de famine, s'il a faim et qu'il ne peut pas manger.
+\item Il peut être en train de manger.
+\end{itemize}
+
+Des contraintes extérieures s'imposent à cette situation :
+
+\begin{itemize}
+\item Pour manger, un philosophe a besoin de deux fourchettes : celle qui se trouve à gauche de sa propre assiette, et celle qui se trouve à droite (c'est-à-dire les deux fourchettes qui entourent sa propre assiette).
+\item Quand un philosophe a faim, il attend que les fourchettes soient libres.
+\end{itemize}
+
+Le problème consiste à définir le comportement des philosophes tel qu'ils puissent tous manger, chacun à leur tour.
+
+%------------------------------------------------
+\pagebreak
+\section{Plateforme SMA Synchrone}
+
+Dans un premier temps, nous créons un package 'plateforme' contenant les éléments principaux de la représentation générique d'un SMA.\\
+
+Notre plateforme fonctionne de manière synchrone : le premier agent observe son environnement et effectue une action dont les critères d'exécution sont satisfaits par les données observées, puis c'est au tour du second et ainsi de suite. Arrivé au dernier agent, on recommence en repartant du premier.\\
+
+Notre package contient les classes suivantes :
+
+\begin{itemize}
+\item \texttt{Agent} : Représente chaque agent du système, liés à un \texttt{Environnement}, à une liste d'actions possibles et à une boîte aux lettres (pour la réception des messages, détaillée plus loin).
+\item \texttt{Environnement} : Représente l'environnement dans lequel évoluent les agents, contenant des \texttt{Donnee} et une liste d'agents \texttt{Agent}.
+\item \texttt{Donnee} : Classe générique représentant les différentes données d'un problème.
+\item \texttt{Action} : Classe abstraite destinée à représenter les différentes actions possibles, chaque action sera une sous-classe de celle-ci. Deux méthodes cruciales définissent une action : \texttt{check\_conditions} qui évalue les critères d'exécution de l'action, et \texttt{effectuer} qui exécute l'action proprement dit et modifie donc les données affectées par cette action.
+\item \texttt{Message} : Les messages seront décrits dans un deuxième temps. Ils permettent la communication entre les agents.
+\end{itemize}
+
+Vous trouverez dans le code Java des commentaires détaillant l'implémentation des différentes classes et de leurs méthodes.\\
+
+
+%------------------------------------------------
+%\pagebreak
+
+\section{Application au problème du dîner des philosophes}
+
+\subsection{Implémentation Générale}
+
+Afin d'implémenter le problème des philosophes, nous créons un nouveau package 'philosophes' contenant différentes classes héritant des classes génériques de la plateforme, ainsi que de nouvelles destinées à représenter d'autres aspects spécifiques au problème.\\
+
+\pagebreak
+
+Les classes héritant de la plateforme sont les suivantes :
+
+\begin{itemize}
+\item \texttt{Philosophe}, héritant de la classe \texttt{Agent}.
+\item \texttt{Table}, héritant de la classe \texttt{Environnement}.
+\item \texttt{philosophes.actions}, package de classes héritant de la classe \texttt{Action}. Chacune de ces classes définit une action exécutable par les philosophes.
+\item \texttt{Fourchettes}, héritant de la classe \texttt{Donnee} et contenant la représentation de l'état des N fourchettes de l'environnement.
+\end{itemize}
+
+Les classes supplémentaires sont les suivantes :
+
+\begin{itemize}
+\item \texttt{Etat}, type énuméré représentant l'état d'un \texttt{Philosophe}.
+\item \texttt{main}, permettant de faire tourner le système.
+\end{itemize}
+
+Comme précisé en introduction, le problème du dîner des philosophes peut être construit de différentes manières. Voici quelques points de comportement que nous avons décidé d'adopter :
+
+\begin{itemize}
+\item Le nombre de philosophes est défini par l'attribut \texttt{effectif} de la \texttt{Table}.
+\item Les philosophes commencent tous avec un compteur de faim \texttt{effectif} à 0, et leur état est \texttt{en\_train\_de\_penser}.
+\item Quand un philosophe pense, un compteur de mesure \texttt{compteurPensee} est incrémenté à chaque tour au niveau de la \texttt{Table}.
+\item Le fait de penser donne faim aux philosophes, ce qui est quantifié par l'attribut \texttt{deltaFPenser} de la \texttt{Table}.
+\item Passé un certain seuil de faim défini par l'attribut \texttt{seuilFaim} de la \texttt{Table}, le philosophe ne peut plus penser et a faim, il essaie alors de ramasser ses fourchettes pour manger.
+\item Lorsqu'un philosophe a faim et qu'il ne mange pas, sa faim s'aggrave, ce qui est quantifié par l'attribut \texttt{deltaFFaim} de la \texttt{Table}.
+\item Passé un certain seuil de faim défini par l'attribut \texttt{seuilFamine} de la \texttt{Table}, le philosophe est en état critique de famine : un compteur de mesure \texttt{compteurFamine} est incrémenté à chaque tour au niveau de la \texttt{Table}.
+\item Lorsqu'un philosophe mange, sa faim diminue, ce qui est quantifié par l'attribut \texttt{deltaFManger} de la \texttt{Table}.
+\item Passé le seuil de satiété défini par défaut à 0, le philosophe s'arrête de manger et peut recommencer à penser.
+\end{itemize}
+
+\subsection{Machine à états}
+
+Nous avons défini quelques actions de base pour nos philosophes. À chaque tour, selon l'état du philosophe et l'observation des données, une action est exécutée. Pour plus de clarté, nous avons représenté l'ensemble des actions implémentées sur une machine à états simplifiée. Les messages ne sont pas encore pris en compte.\\
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tikzpicture}
+% style des noeuds
+\tikzstyle{etat}=[rectangle,minimum height=1.4cm,minimum width=5cm,draw]
+\tikzstyle{legende}=[rectangle,dashed,minimum height=1.4cm,minimum width=4cm,draw]
+% style des fl\`eches
+\tikzstyle{lien}=[->,>=stealth',thick,rounded corners=4pt]
+% placement des noeuds
+\node[etat] (penser) at (0,4.5) {en\_train\_de\_penser};
+\node[etat] (manger) at (9,0) {en\_train\_de\_manger};
+\node[etat] (fourchettes) at (9,9) {en\_attente\_fourchettes};
+\node[legende] (legende) at (0,0) {\begin{tabular}{c}NomAction\\ \textcolor{red}{conditions} \\ \textcolor{blue}{conséquences}\end{tabular}};
+% placement des fl\`eches
+\draw[lien] (fourchettes)edge[loop above]node[midway,fill=white]{\begin{tabular}{c}Faim/Famine \\ \textcolor{red}{! fourchettesDispo} \\ \textcolor{blue}{faim += deltaFFaim}\end{tabular}}();
+\draw[lien] (manger)edge[loop below]node[midway,fill=white]{\begin{tabular}{c}Manger \\ \textcolor{red}{faim > 0} \\ \textcolor{blue}{faim += deltaFManger}\end{tabular}}();
+\draw[lien] (penser)edge[loop above]node[midway,fill=white]{\begin{tabular}{c}Penser \\ \textcolor{red}{faim < seuilFaim} \\ \textcolor{blue}{faim += deltaFPenser}\end{tabular}}();
+\draw[lien] (manger)--(penser)node[midway,fill=white]{\begin{tabular}{c}FinirManger \\ \textcolor{red}{faim <= 0} \end{tabular}};
+\draw[lien] (penser)--(fourchettes)node[midway,fill=white]{\begin{tabular}{c}FinirPenser \\ \textcolor{red}{faim >= seuilFaim} \end{tabular}};
+\draw[lien] (fourchettes)--(manger)node[midway,fill=white]{\begin{tabular}{c}PrendreFourchettes \\ \textcolor{red}{fourchettesDispo} \\ \textcolor{blue}{fourchettesDispo=false} \end{tabular}};
+\end{tikzpicture}
+\caption{Représentation en machine à état du système}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+\subsection{Rôle des paramètres}
+
+Bien évidemment, le comportement du système est largement affecté par le choix des constantes de l'environnement. Par exemple, un choix de \texttt{deltaFManger} démesurément grand (en valeur absolue) par rapport à \texttt{deltaFPenser} et \texttt{deltaFFaim} a pour conséquence de simplifier grandement le problème : chaque philosophe peut passer son temps à penser et ne manger qu'une fois de temps pour rattraper son retard. Les fourchettes sont alors presque tout le temps disponible.\\
+
+L'intérêt bien sûr n'est pas de regarder ses philosophes manger mais bien de définir des constantes équilibrées pour étudier un système nuancé. Après quelques essais, nous avons décidé de travailler dans un premier temps \texttt{seuilFaim = 10, deltaPenser = 5, deltaManger = -2, deltaFaim = 1}. On remarquera que le choix de \texttt{deltaFFamine} ne joue que sur la variable de mesure \texttt{compteurFamine} et non sur le fonctionnement même du système.\\
+
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=\textwidth]{figure_1.png}
+\caption{Évolution de la faim et de la pensée pour 9 philosophes}
+\end{center}
+\end{figure}
+
+
+
+Le choix de \texttt{deltaFFamine} est donc un problème de convention. Pour le contexte donné établi précédemment, on trouve par exemple une famine totale accumulée sur 20 000 tours de 2662, 521, et 23 pour des valeurs respectives de \texttt{deltaFFamine} de 50, 60, et 70. On choisira \texttt{deltaFFamine}=60 pour les prochaines simulations.\\
+
+Le choix du nombre de philosophe est nettement plus intéressant. En effet, on remarque vite que le comportement du système est assez chaotique : les scores de famine et de pensée peuvent varier drastiquement d'une configuration à l'autre, ceci sans que l'on ai pu identifier de relation logique entre l'effectif et ces scores (cf. Figure 3).\\
+
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[grid=major,
+xlabel={Nombre de philosophes},
+ylabel={Famine et Pensée},
+legend entries={Famine, Pensée},
+ymode=log]
+
+\addplot coordinates {(3,34736) (4,0) (5,1260) (6,0) (7,383) (8,54024) (9,521) (10,142) (11,576) (12,261) (13,432) (14,197) (15,456)};
+\addplot coordinates {(3,271) (4,7291) (5,4369) (6,8964) (7,7634) (8,14325) (9,10307) (10,12715) (11,12791) (12,14981) (13,15596) (14,17289) (15,18135)};
+
+\end{axis}
+\end{tikzpicture}
+
+\caption{Famine et pensée finales en fonction du nombre de philosophes}
+\end{center}
+\end{figure}
+
+
+
+
+
+
+Ce comportement est problématique. Dans le cas où l'on a 8 philosophes, le comportement du système est désastreux. Il faut donc mettre en place une solution pour régulariser ce genre de cas, et pourvoir travailler avec un système moins imprévisible.\\
+
+\subsection{Ajout des messages}
+
+Le problème de beaucoup de configurations malheureuses, c'est que certains philosophes s'accaparent les couverts pendant que d'autres n'ont jamais l'occasion de les récupérer. On peut essayer d'éviter cela en mettant en place un système de communication entre agents.\\
+
+La communication entre agents passe par la classe \texttt{Message}. Un agent peut envoyer un message à un autre agent en créant une instance de \texttt{Message} spécifiant son identifiant, l'identifiant du destinataire, et le contenu du message. L'envoi est effectué via l'objet d'environnement avec la méthode \texttt{send} qui redistribue le message au destinataire.\\
+
+Le message est alors stocké dans la boite aux lettres du destinataire dans l'attente d'être traité. Les messages sont ensuite régulièrement supprimés (par exemple à la fin de chaque tour) pour éviter d'accumuler de vieux messages. Pour le traitement, plusieurs solutions sont envisageables au niveau de l'implémentation d'un problème particulier.\\
+
+Pour nos philosophes, nous avons décidé de mettre en place une solution simple : au début de son tour le philosophe consulte le dernier message qu'il a reçu, les autres sont ignorés. Le contenu du message intervient alors au niveau des conditions d'exécution des actions, au même titre que les autres données du système.\\
+
+Un premier type de message a été mis en place pour diminuer les scores de famine : \texttt{Help}. Cette démarche a été très fructueuse, donc nous nous sommes contentés de ce type de message dans un premier temps. Le message est émis par un philosophe lorsqu'il passe le seuil de famine, et est envoyé à ses deux voisins pour leur demander de lâcher leurs fourchettes. Ainsi, au tour suivant, le philosophe peut manger et on évite un état de famine prolongé.\\
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[grid=major,
+xlabel={Nombre de philosophes},
+ylabel={Famine et Pensée},
+legend entries={Famine, Pensée},
+ymode=log]
+
+\addplot coordinates {(3,29430) (4,0) (5,209) (6,0) (7,121) (8,13) (9,109) (10,29) (11,89) (12,61) (13,72) (14,73) (15,84)};
+\addplot coordinates {(3,31) (4,7291) (5,4247) (6,8964) (7,7621) (8,10860) (9,10380) (10,12690) (11,13142) (12,14914) (13,15596) (14,17128) (15,18179)};
+
+\end{axis}
+\end{tikzpicture}
+
+\caption{Famine et pensée finales en fonction du nombre de philosophes - avec messages}
+\end{center}
+\end{figure}
+
+
+%------------------------------------------------
+
+%\pagebreak
+%\section*{Conclusion}
+%\addcontentsline{toc}{section}{Conclusion}
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
