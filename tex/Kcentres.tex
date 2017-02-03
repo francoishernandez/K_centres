@@ -156,61 +156,32 @@ Problème des K-centres} % Subtitle
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
 
-Un Système Multi-Agents est un système composé d'un ensemble d'agents, situés dans un certain environnement et interagissant selon certaines relations. Un agent est une entité caractérisée par le fait qu'elle est, au moins partiellement, autonome. Le fonctionnement du système est défini par le fonctionnement des agents, le système central ne fait qu'office d'environnement d'évolution et de communication des différents agents. On parle d'intelligence artificielle distribuée.\\
+Le problème des K-centres est un problème d'optimisation combinatoire. Le problème peut se décrire de façon informelle ainsi (Wikipedia) : étant donné n villes, il faut ouvrir une caserne de pompiers dans k villes, tel que la distance entre chaque ville et la plus proche caserne soit minimisée.\\
 
-Ce TD a pour objectif de construire une plateforme générique permettant de représenter et simuler des systèmes multi-agents de différentes natures. Un premier SMA simulé sera celui du dîner des philosophes.\\
+Il existe plusieurs définitions des problèmes K-centres. Ici, nous considérons la formulation suivante. Supposons un ensemble E de $n$ points dans un espace vectoriel ou un graphe complet muni d'une fonction de distance satisfaisant l'inégalité triangulaire. Il s'agit de trouver k "centroids" afin de minimiser la distance maximale entre un point de E et le centre le plus proche.\\
 
-Le problème des philosophes peut être défini de différentes manières, mais l'idée générale est toujours la même.\\
+Ce problème de décision est NP-complet.\\
 
-La situation est la suivante :
-\begin{itemize}
-\item Un certain nombre de philosophes se trouvent autour d'une table.
-\item Chacun des philosophes a devant lui un plat de spaghetti.
-\item À gauche de chaque plat de spaghetti se trouve une fourchette.
-\end{itemize}
+Au cours de ce projet, nous avons mis en place un programme en Java constituant une représentation du problème, et proposant différents algorithmes de résolution sur différents ensembles d'instances.\\
 
-Un philosophe a un certain nombre d'états possibles, par exemple :
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=10cm]{intro.png}
+\end{center}
+\end{figure}
 
-\begin{itemize}
-\item Il peut penser, ce qui lui donne faim.
-\item Il peut être dans un état de famine, s'il a faim et qu'il ne peut pas manger.
-\item Il peut être en train de manger.
-\end{itemize}
-
-Des contraintes extérieures s'imposent à cette situation :
-
-\begin{itemize}
-\item Pour manger, un philosophe a besoin de deux fourchettes : celle qui se trouve à gauche de sa propre assiette, et celle qui se trouve à droite (c'est-à-dire les deux fourchettes qui entourent sa propre assiette).
-\item Quand un philosophe a faim, il attend que les fourchettes soient libres.
-\end{itemize}
-
-Le problème consiste à définir le comportement des philosophes tel qu'ils puissent tous manger, chacun à leur tour.
 
 %------------------------------------------------
 \pagebreak
-\section{Plateforme SMA Synchrone}
 
-Dans un premier temps, nous créons un package 'plateforme' contenant les éléments principaux de la représentation générique d'un SMA.\\
+\section{Implémentation}
 
-Notre plateforme fonctionne de manière synchrone : le premier agent observe son environnement et effectue une action dont les critères d'exécution sont satisfaits par les données observées, puis c'est au tour du second et ainsi de suite. Arrivé au dernier agent, on recommence en repartant du premier.\\
-
-Notre package contient les classes suivantes :
-
-\begin{itemize}
-\item \texttt{Agent} : Représente chaque agent du système, liés à un \texttt{Environnement}, à une liste d'actions possibles et à une boîte aux lettres (pour la réception des messages, détaillée plus loin).
-\item \texttt{Environnement} : Représente l'environnement dans lequel évoluent les agents, contenant des \texttt{Donnee} et une liste d'agents \texttt{Agent}.
-\item \texttt{Donnee} : Classe générique représentant les différentes données d'un problème.
-\item \texttt{Action} : Classe abstraite destinée à représenter les différentes actions possibles, chaque action sera une sous-classe de celle-ci. Deux méthodes cruciales définissent une action : \texttt{check\_conditions} qui évalue les critères d'exécution de l'action, et \texttt{effectuer} qui exécute l'action proprement dit et modifie donc les données affectées par cette action.
-\item \texttt{Message} : Les messages seront décrits dans un deuxième temps. Ils permettent la communication entre les agents.
-\end{itemize}
-
-Vous trouverez dans le code Java des commentaires détaillant l'implémentation des différentes classes et de leurs méthodes.\\
 
 
 %------------------------------------------------
-%\pagebreak
+\pagebreak
 
-\section{Application au problème du dîner des philosophes}
+\section{Théorie, NP-complétude et approximation}
 
 \subsection{Implémentation Générale}
 
@@ -286,14 +257,6 @@ Bien évidemment, le comportement du système est largement affecté par le choix d
 L'intérêt bien sûr n'est pas de regarder ses philosophes manger mais bien de définir des constantes équilibrées pour étudier un système nuancé. Après quelques essais, nous avons décidé de travailler dans un premier temps \texttt{seuilFaim = 10, deltaPenser = 5, deltaManger = -2, deltaFaim = 1}. On remarquera que le choix de \texttt{deltaFFamine} ne joue que sur la variable de mesure \texttt{compteurFamine} et non sur le fonctionnement même du système.\\
 
 
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=\textwidth]{figure_1.png}
-\caption{Évolution de la faim et de la pensée pour 9 philosophes}
-\end{center}
-\end{figure}
-
-
 
 Le choix de \texttt{deltaFFamine} est donc un problème de convention. Pour le contexte donné établi précédemment, on trouve par exemple une famine totale accumulée sur 20 000 tours de 2662, 521, et 23 pour des valeurs respectives de \texttt{deltaFFamine} de 50, 60, et 70. On choisira \texttt{deltaFFamine}=60 pour les prochaines simulations.\\
 
@@ -356,6 +319,16 @@ ymode=log]
 \caption{Famine et pensée finales en fonction du nombre de philosophes - avec messages}
 \end{center}
 \end{figure}
+
+%------------------------------------------------
+%\pagebreak
+
+\section{Méthodes de résolution}
+
+%------------------------------------------------
+%\pagebreak
+
+\section{Évaluation des performances}
 
 
 %------------------------------------------------
