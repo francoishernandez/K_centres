@@ -24,10 +24,10 @@ public class Main {
 		//Exact algoDeTest = new Exact();
 		
 		// CHOIX DU NOMBRE DE NOEUDS
-		int nbNoeuds = 500;
+		int nbNoeuds = 175;
 		
 		// CHOIX DU NOMBRE DE CENTRES
-		int k = 10;
+		int k = 20;
 		
 		// CHOIX GENERATION DU PROBLEME 
 		
@@ -67,7 +67,8 @@ public class Main {
 
 		
 		// Affichage du graphe
-		/*try {
+		/*
+		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
 				public void run() {
 					try {
