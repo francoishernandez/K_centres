@@ -176,6 +176,33 @@ Au cours de ce projet, nous avons mis en place un programme en Java constituant 
 
 \section{Implémentation}
 
+Nous avons choisi d'implémenter ce problème dans le langage Java. Nous avons mis en place des fonctions de génération et d'affichage d'instances (ensemble de points), ainsi que différents algorithmes de résolution à tester, et des méthodes de lecture et écriture des données sous format texte.\\
+
+Le programme comporte ainsi les packages suivants :
+\begin{itemize}
+\item \texttt{Generation} : contient les différentes classes de génération d'instances, ainsi que celles associées à la lecture et l'écriture des fichiers .txt ;
+\item \texttt{Graphics} : contient les différentes classes associées à l'affichage des instances ;
+\item \texttt{Resolution} : contient les différents algorithmes de résolution ;
+\item \texttt{Main} : contient le main qui permet de lancer les algorithmes de test, ainsi que la définition des différents objets utilisés ;
+\end{itemize}
+
+\subsection{Objets utilisés}
+
+Les objets utilisés dans ce programme sont définis de la façon suivante :
+\begin{itemize}
+\item \texttt{Point} : ensemble de coordonnées, ici \texttt{x} et \texttt{y} dans l'espace à deux dimensions ;
+\item \texttt{Instance} ensemble de $n$ \texttt{Points} sous forme d'\texttt{ArrayList}, et un attribut $k$ définissant le nombre de centres attendus ;
+\item \texttt{Solution} : ensemble de $k$ \texttt{Points} constituant les centres d'une \texttt{Instance}, ainsi qu'un attribut $rayon$ définissant le rayon minimal pour lequel tous les points de l'instance sont couverts.
+\end{itemize}
+
+\subsection{Génération d'instances}
+
+\subsection{Affichage des données}
+
+\subsection{Algorithmes de résolution}
+
+\subsection{Conversion en fichier texte}
+
 
 
 %------------------------------------------------
