@@ -52,7 +52,7 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \lstset{
-language=Java,
+%language=Java,
 basicstyle=\normalsize, % ou \c ca==> basicstyle=\scriptsize,
 upquote=true,
 aboveskip={1.2\baselineskip},
@@ -180,7 +180,7 @@ Nous avons choisi d'implémenter ce problème dans le langage Java. Nous avons mis
 
 Le programme comporte ainsi les packages suivants :
 \begin{itemize}
-\item \texttt{Generation} : contient les différentes classes de génération d'instances, ainsi que celles associées à la lecture et l'écriture des fichiers .txt ;
+\item \texttt{Generation} : contient les différentes classes de génération d'instances, ainsi que celle associée à la lecture des fichiers .txt ;
 \item \texttt{Graphics} : contient les différentes classes associées à l'affichage des instances ;
 \item \texttt{Resolution} : contient les différents algorithmes de résolution ;
 \item \texttt{Main} : contient le main qui permet de lancer les algorithmes de test, ainsi que la définition des différents objets utilisés ;
@@ -191,19 +191,48 @@ Le programme comporte ainsi les packages suivants :
 Les objets utilisés dans ce programme sont définis de la façon suivante :
 \begin{itemize}
 \item \texttt{Point} : ensemble de coordonnées, ici \texttt{x} et \texttt{y} dans l'espace à deux dimensions ;
-\item \texttt{Instance} ensemble de $n$ \texttt{Points} sous forme d'\texttt{ArrayList}, et un attribut $k$ définissant le nombre de centres attendus ;
+\item \texttt{Instance} ensemble de $n$ \texttt{Points} sous forme d'\texttt{ArrayList}, et un attribut $k$ définissant le nombre de centres attendus, contient également une méthode permettant d'exporter l'instance au format .txt ;
 \item \texttt{Solution} : ensemble de $k$ \texttt{Points} constituant les centres d'une \texttt{Instance}, ainsi qu'un attribut $rayon$ définissant le rayon minimal pour lequel tous les points de l'instance sont couverts.
 \end{itemize}
 
 \subsection{Génération d'instances}
 
+Nous avons choisi d'implémenter deux méthodes principales de génération d'instances :
+\begin{itemize}
+\item \texttt{Uniforme} : génère $n$ \texttt{Points} de façon aléatoire dans l'espace défini (en conservant des marges afin de ne pas avoir de points trop proches des bords, pour des raisons d'affichage) ;
+\item \texttt{Cluster} : LEO
+\end{itemize}
+
 \subsection{Affichage des données}
+
+Afin d'avoir une représentation graphique claire des différentes instances et des résultats des algorithmes de résolution, nous avons choisi de définir une interface graphique à l'aide des outils \texttt{Swing}. Cela consiste en deux classes, \texttt{Fenetre} et \texttt{Panel}. \texttt{Fenetre} hérite de la classe \texttt{JFrame} et définit les caractéristiques de la fenêtre qui contiendra le \texttt{Panel}. \texttt{Panel} hérite de la classe \texttt{JPanel} et contient les méthodes associées au dessin des représentations. La méthode \texttt{paintComponent} dessine les différents éléments dans un \texttt{bufferGraphics}, attribut d'une image.\\
 
 \subsection{Algorithmes de résolution}
 
+LEO
+
 \subsection{Conversion en fichier texte}
 
+Un standard d'export des instances a été défini afin de pouvoir sauvegarder et échanger différentes instances de test. Celui-ci est le suivant.\\
 
+\begin{lstlisting}
+nombre d'instances i
+
+n1, k1
+x1, y1, x2, y2, [...], xn1, yn1
+
+n2, k2
+x1, y1, x2, y2, [...], xn2, yn2
+
+[...]
+
+ni, ki
+x1, y1, x2, y2, [...], xni, yni
+\end{lstlisting}
+
+La méthode \texttt{createFile} de la classe \texttt{Instance} permet de créer de tels fichiers à l'aide de la classe \texttt{FileWriter} de Java.\\
+
+La classe \texttt{Importer} du package \texttt{Generation} permet de lire de tels fichiers à l'aide des classes \texttt{FileReader} et \texttt{BufferedReader} de Java.\\
 
 %------------------------------------------------
 \pagebreak
