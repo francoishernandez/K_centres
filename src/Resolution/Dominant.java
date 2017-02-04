@@ -21,6 +21,7 @@ public class Dominant {
 		}
 		Collections.sort(listeDistances);
 		
+		
 		ArrayList<Point> C = new ArrayList<Point>();
 		
 		//while

@@ -36,7 +36,7 @@ public class Main {
 		//Importer gen = new Importer("test", 0); // (nomFichier, numéro de l'instance à charger dans ce fichier) Ne prends pas en compte les choix de nb de noeuds et de centres.
 		
 		// SAUVEGARDE DE L'INSTANCE
-		boolean sauvegarde = true;
+		boolean sauvegarde = false;
 		String nomSauvegarde = new String("clusters");
 		
 		
