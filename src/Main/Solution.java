@@ -38,4 +38,5 @@ public class Solution {
 		System.out.println("Liste des " + centres.size() + " centres : " + versStringCentres());
 	}
 	
+	
 }

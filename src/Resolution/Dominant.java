@@ -4,6 +4,8 @@ import java.util.Collections;
 
 import Main.*;
 
+// A COMMENTER
+
 public class Dominant {
 
 	public Solution resoudre(Instance I) {
@@ -21,14 +23,28 @@ public class Dominant {
 		}
 		Collections.sort(listeDistances);
 		
-		
-		ArrayList<Point> C = new ArrayList<Point>();
-		
-		//while
-		
-		// A FINIR !
-		return null;
-		
+		boolean cont = true; 
+		int i = 0;
+		while(cont){
+			
+			int d = listeDistances.get(i);
+			ArrayList<Point> C = new ArrayList<Point>();
+			
+			for (int k=0; k<I.getK(); k++){
+				Point e = I.maxSommetsNonCouverts(C, d);
+				C.add(e);
+			}
+			
+			if (I.estCouvert(C, d)){
+				int rayon = I.calculRayon(C);
+				Solution sol = new Solution(rayon,C);
+				return sol;
+			}
+			
+			i++;
+			
+		}
+		return null;	
 	}
 	
 }

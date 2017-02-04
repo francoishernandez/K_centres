@@ -20,18 +20,19 @@ public class Main {
 		// CHOIX ALGO DE RESOLUTION
 		
 		//DeuxApprox algoDeTest = new DeuxApprox();
-		Descente algoDeTest = new Descente(new DeuxApprox());
+		//Descente algoDeTest = new Descente(new DeuxApprox());
 		//Exact algoDeTest = new Exact();
+		Dominant algoDeTest = new Dominant();
 		
 		// CHOIX DU NOMBRE DE NOEUDS
-		int nbNoeuds = 175;
+		int nbNoeuds = 100;
 		
 		// CHOIX DU NOMBRE DE CENTRES
-		int k = 20;
+		int k = 10;
 		
 		// CHOIX GENERATION DU PROBLEME 
 		
-		Cluster gen = new Cluster(30, 15); // (NbClusters, tailleClusters)
+		Cluster gen = new Cluster(10, 15); // (NbClusters, tailleClusters)
 		//Uniforme gen = new Uniforme();
 		//Importer gen = new Importer("test", 0); // (nomFichier, numéro de l'instance à charger dans ce fichier) Ne prends pas en compte les choix de nb de noeuds et de centres.
 		
@@ -67,7 +68,7 @@ public class Main {
 
 		
 		// Affichage du graphe
-		/*
+		
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
 				public void run() {
@@ -88,7 +89,7 @@ public class Main {
 			System.err.println("Erreur a la creation de l'interface Swing.");
 			System.err.println(e);
 		}
-		*/
+		
 
 	}
 }

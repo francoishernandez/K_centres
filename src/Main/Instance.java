@@ -75,4 +75,33 @@ public class Instance {
 		this.createFile(name, instances);
 	}
 	
+	
+	// Nécessaire pour l'algo dominant.
+	// Détermine si l'instance est couverte par les points centres et le rayon rayon
+	public boolean estCouvert(ArrayList<Point> centres, int rayon){
+		boolean rep = true;
+		for (int i=0; i<points.size();i++){
+			if (!(points.get(i).estCouvert(centres,rayon))){
+				rep = false;
+			}
+		}
+		return rep;
+	}
+	
+	// Nécessaire pour l'algo dominant.
+	// Renvoie le sommet ayant le plus grand nombre de voisins non couverts
+	public Point maxSommetsNonCouverts (ArrayList<Point> centres, int rayon){
+		int max = 0;
+		int iMax = 0;
+		for (int i=0; i<n;i++){
+			int nbVoisins = points.get(i).nbVoisinsNonCouverts(points, centres, rayon);
+			if (nbVoisins>=max){
+				max = nbVoisins;
+				iMax = i;
+			}
+		}
+		return points.get(iMax);
+	}
+	
+	
 }
