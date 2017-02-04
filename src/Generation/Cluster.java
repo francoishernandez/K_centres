@@ -8,7 +8,7 @@ public class Cluster extends Generateur {
 	ArrayList<Point> centresClusters;
 	int sigma;
 	
-	//On peut générer soit on donnant la liste des clusters :
+	//On peut générer soit en donnant la liste des clusters :
 	public Cluster(ArrayList<Point> centresClusters, int sigma){
 		this.centresClusters = centresClusters;
 		this.sigma = sigma;

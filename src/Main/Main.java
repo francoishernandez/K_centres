@@ -24,7 +24,7 @@ public class Main {
 		//Exact algoDeTest = new Exact();
 		
 		// CHOIX DU NOMBRE DE NOEUDS
-		int nbNoeuds = 1000;
+		int nbNoeuds = 175;
 		
 		// CHOIX DU NOMBRE DE CENTRES
 		int k = 20;
@@ -67,6 +67,7 @@ public class Main {
 
 		
 		// Affichage du graphe
+		/*
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
 				public void run() {
@@ -87,6 +88,7 @@ public class Main {
 			System.err.println("Erreur a la creation de l'interface Swing.");
 			System.err.println(e);
 		}
+		*/
 
 	}
 }
