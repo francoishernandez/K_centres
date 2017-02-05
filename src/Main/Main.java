@@ -66,6 +66,7 @@ public class Main {
 		float secondes = (float)(t2-t1)/1000;
 		System.out.println("Temps d'éxecution : " + secondes + " secondes.");
 
+		/*
 		
 		// Affichage du graphe
 		
@@ -84,11 +85,18 @@ public class Main {
 				}
 			});
 		}
+		
+		
 
 		catch(Exception e){
 			System.err.println("Erreur a la creation de l'interface Swing.");
 			System.err.println(e);
 		}
+		
+		*/
+		
+		
+		
 		
 
 	}
