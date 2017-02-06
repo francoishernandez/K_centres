@@ -37,8 +37,8 @@ public class Export {
 
 		// CHOIX GENERATION DU PROBLEME 
 
-		Cluster gen = new Cluster(10, 15); // (NbClusters, tailleClusters)
-		//Uniforme gen = new Uniforme();
+		//Cluster gen = new Cluster(10, 15); // (NbClusters, tailleClusters)
+		Uniforme gen = new Uniforme();
 		//Importer gen = new Importer("test", 0); // (nomFichier, numéro de l'instance à charger dans ce fichier) Ne prends pas en compte les choix de nb de noeuds et de centres.
 
 		// SAUVEGARDE DE L'INSTANCE
@@ -51,7 +51,7 @@ public class Export {
 		int[] n = {10, 25, 50, 100, 150, 200};
 		int[] res = new int[n.length];
 
-		fw = new FileWriter("export/perf"+algoDeTest.getClass().getName()+".csv");
+		fw = new FileWriter("export/perf"+algoDeTest.getClass().getName()+gen.getClass().getName()+".csv");
 		fw.write("k, ");
 		for (int i=0; i<n.length; i++){
 			fw.write(n[i]+", ");
