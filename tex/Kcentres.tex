@@ -333,8 +333,10 @@ Tests pour 10 clusters de taille 15.
 xlabel={Nombre de points},
 ylabel={Rayon},
 %legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style = {at = {(0.5,-0.2)}, anchor=south},
-legend columns = 2
+legend style = {at = {(0.5,-0.15)}, anchor=north},
+legend columns = 2,
+height= 12cm,
+width = 14cm
 ]
 
 \addlegendimage{color=blue,thick,solid}
@@ -349,30 +351,30 @@ legend columns = 2
 \addlegendentry{$k=5$}
 \addlegendimage{mark=star}
 \addlegendentry{$k=10$}
-\addlegendimage{mark=diamond}
+\addlegendimage{mark=diamond*}
 \addlegendentry{$k=20$}
 
 % DeuxApprox
 
-\addplot[color=blue,mark=*, legend={k=3}] coordinates {(10,257) (25,353) (50,278) (100,290) (150,299) (175,327) (200,293) (500,321)};
-\addplot[color=blue,mark=o, legend={k=3}] coordinates {(10,177) (25,201) (50,202) (100,204) (150,211) (175,233) (200,211) (500,220)};
-\addplot[color=blue,mark=star, legend={k=3}] coordinates {(10,0) (25,116) (50,58) (100,67) (150,68) (175,115) (200,75) (500,82)};
-\addplot[color=blue,mark=diamond*, legend={k=3}] coordinates {(25,22) (50,30) (100,39) (150,42) (175,52) (200,44) (500,53)};
+\addplot[color=blue,mark=*] coordinates {(10,257) (25,353) (50,278) (100,290) (150,299) (175,327) (200,293) (500,321)};
+\addplot[color=blue,mark=o] coordinates {(10,177) (25,201) (50,202) (100,204) (150,211) (175,233) (200,211) (500,220)};
+\addplot[color=blue,mark=star] coordinates {(10,0) (25,116) (50,58) (100,67) (150,68) (175,115) (200,75) (500,82)};
+\addplot[color=blue,mark=diamond*] coordinates {(25,22) (50,30) (100,39) (150,42) (175,52) (200,44) (500,53)};
 
 
 % DeuxApprox avec Descente
 
-\addplot[color=red,mark=*, legend={k=3}] coordinates {(10,153) (25,229) (50,152) (100,158) (150,156) (175,198) (200,159) (500,164)};
+\addplot[color=red,mark=*] coordinates {(10,153) (25,229) (50,152) (100,158) (150,156) (175,198) (200,159) (500,164)};
 \addplot[color=red,mark=o] coordinates {(10,78) (25,151) (50,85) (100,85) (150,93) (175,156) (200,86) (500,100)};
 \addplot[color=red,mark=star] coordinates {(10,0) (25,66) (50,46) (100,48) (150,51) (175,69) (200,56) (500,63)};
 \addplot[color=red,mark=diamond*] coordinates {(25,21) (50,27) (100,32) (150,35) (175,40) (200,38) (500,42)};
 
 % Dominant
 
-\addplot[color=green,mark=*, legend={k=3}] coordinates {(10,177) (25,245) (50,175) (100,179) (150,183) (200,200)};
-\addplot[color=green,mark=o, legend={k=3}] coordinates {(10,99) (25,151) (50,102) (100,103) (150,104) (200,111)};
-\addplot[color=green,mark=star, legend={k=3}] coordinates {(10,0) (25,71) (50,42) (100,47) (150,49) (200,54)};
-\addplot[color=green,mark=diamond*, legend={k=3}] coordinates {(25,22) (50,24) (100,28) (150,31) (200,32)};
+\addplot[color=green,mark=*] coordinates {(10,177) (25,245) (50,175) (100,179) (150,183) (200,200)};
+\addplot[color=green,mark=o] coordinates {(10,99) (25,151) (50,102) (100,103) (150,104) (200,111)};
+\addplot[color=green,mark=star] coordinates {(10,0) (25,71) (50,42) (100,47) (150,49) (200,54)};
+\addplot[color=green,mark=diamond*] coordinates {(25,22) (50,24) (100,28) (150,31) (200,32)};
 
 
 
@@ -383,76 +385,63 @@ legend columns = 2
 \end{center}
 \end{figure}
 
-
-\begin{figure}[!h]
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[grid=major,
-xlabel={Nombre de points},
-ylabel={Rayon},
-legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style={at ={(1.35,0.8)}}
-]
-
-\addplot coordinates {(10,257) (25,353) (50,278) (100,290) (150,299) (175,327) (200,293) (500,321)};
-\addplot coordinates {(10,177) (25,201) (50,202) (100,204) (150,211) (175,233) (200,211) (500,220)};
-\addplot coordinates {(10,0) (25,116) (50,58) (100,67) (150,68) (175,115) (200,75) (500,82)};
-\addplot coordinates {(25,22) (50,30) (100,39) (150,42) (175,52) (200,44) (500,53)};
-
-\end{axis}
-\end{tikzpicture}
-
-\caption{Rayon en fonction du nombre de points et du nombre de centres - DeuxApprox 1}
-\end{center}
-\end{figure}
-
-
-\begin{figure}[!h]
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[grid=major,
-xlabel={Nombre de points},
-ylabel={Rayon},
-legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style={at ={(1.35,0.8)}}
-]
-
-\addplot coordinates {(10,177) (25,245) (50,175) (100,179) (150,183) (200,200)};
-\addplot coordinates {(10,99) (25,151) (50,102) (100,103) (150,104) (200,111)};
-\addplot coordinates {(10,0) (25,71) (50,42) (100,47) (150,49) (200,54)};
-\addplot coordinates {(25,22) (50,24) (100,28) (150,31) (200,32)};
-
-\end{axis}
-\end{tikzpicture}
-
-\caption{Rayon en fonction du nombre de points et du nombre de centres - Dominant 1}
-\end{center}
-\end{figure}
-
-
 Tests avec des instances uniformes
 
+
 \begin{figure}[!h]
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[grid=major,
 xlabel={Nombre de points},
 ylabel={Rayon},
-legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style={at ={(1.35,0.8)}}
+%legend entries={k = 3, k = 5, k = 10, k = 20},
+legend style = {at = {(0.5,-0.15)}, anchor=north},
+legend columns = 2,
+height= 12cm,
+width = 14cm
 ]
 
-\addplot coordinates {(10,225) (25,252) (50,272) (100,286) (150,294) (175,292) (200,294) (500,302)};
-\addplot coordinates {(10,164) (25,185) (50,193) (100,207) (150,208) (175,201) (200,228) (500,218)};
-\addplot coordinates {(10,0) (25,118) (50,134) (100,139) (150,154) (175,146) (200,152) (500,158)};
-\addplot coordinates {(25,48) (50,83) (100,97) (150,100) (175,100) (200,105) (500,106)};
+\addlegendimage{color=blue,thick,solid}
+\addlegendentry{DeuxApprox}
+\addlegendimage{color=red,thick,solid}
+\addlegendentry{DeuxApprox avec Descente}
+\addlegendimage{color=green,thick,solid}
+\addlegendentry{Dominant}
+\addlegendimage{mark=*}
+\addlegendentry{$k=3$}
+\addlegendimage{mark=o}
+\addlegendentry{$k=5$}
+\addlegendimage{mark=star}
+\addlegendentry{$k=10$}
+\addlegendimage{mark=diamond*}
+\addlegendentry{$k=20$}
+
+% DeuxApprox
+
+\addplot[color=blue,mark=*] coordinates {(10,269) (25,352) (50,378) (100,416) (150,415) (175,383) (200,365) (500,419)};
+\addplot[color=blue,mark=o] coordinates {(10,157) (25,207) (50,243) (100,271) (150,281) (175,280) (200,270) (500,279)};
+\addplot[color=blue,mark=star] coordinates {(10,0) (25,124) (50,150) (100,167) (150,173) (175,173) (200,174) (500,182)};
+\addplot[color=blue,mark=diamond*] coordinates {(25,39) (50,88) (100,100) (150,110) (175,111) (200,111) (500,117)};
+
+
+% DeuxApprox avec Descente
+
+\addplot[color=red,mark=*] coordinates  {(10,225) (25,252) (50,272) (100,286) (150,294) (175,292) (200,294) (500,302)};
+\addplot[color=red,mark=o] coordinates {(10,164) (25,185) (50,193) (100,207) (150,208) (175,201) (200,228) (500,218)};
+\addplot[color=red,mark=star] coordinates {(10,0) (25,118) (50,134) (100,139) (150,154) (175,146) (200,152) (500,158)};
+\addplot[color=red,mark=diamond*] coordinates {(25,48) (50,83) (100,97) (150,100) (175,100) (200,105) (500,106)};
+
+% Dominant
 
 \end{axis}
 \end{tikzpicture}
 
-\caption{Rayon en fonction du nombre de points et du nombre de centres - Descente 2}
+\caption{Rayon en fonction du nombre de points et du nombre de centres (Instances uniformes)}
 \end{center}
 \end{figure}
+
+
+
 
 \section{Évaluation des performances}
 
@@ -497,29 +486,6 @@ legend style={at ={(1.35,0.8)}}
 \caption{Léo}
 \end{center}
 \end{figure}
-
-\begin{figure}[!h]
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[grid=major,
-xlabel={Nombre de points},
-ylabel={Rayon},
-legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style={at ={(1.35,0.8)}}
-]
-
-\addplot coordinates {(10,269) (25,352) (50,378) (100,416) (150,415) (175,383) (200,365) (500,419)};
-\addplot coordinates {(10,157) (25,207) (50,243) (100,271) (150,281) (175,280) (200,270) (500,279)};
-\addplot coordinates {(10,0) (25,124) (50,150) (100,167) (150,173) (175,173) (200,174) (500,182)};
-\addplot coordinates {(25,39) (50,88) (100,100) (150,110) (175,111) (200,111) (500,117)};
-
-\end{axis}
-\end{tikzpicture}
-
-\caption{Rayon en fonction du nombre de points et du nombre de centres - DeuxApprox 2}
-\end{center}
-\end{figure}
-
 
 %------------------------------------------------
 
