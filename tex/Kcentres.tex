@@ -181,9 +181,9 @@ Nous avons choisi d'implémenter ce problème dans le langage Java. Nous avons mis
 
 Le programme comporte ainsi les packages suivants :
 \begin{itemize}
-\item \texttt{Generation} : contient les différentes classes de génération d'instances, ainsi que celle associée à la lecture des fichiers .txt ;
+\item \texttt{Generation} : contient les différentes classes de génération d'instances ainsi que celle associée à la lecture des fichiers .txt, toutes héritant de la classe abstraite \texttt{Generateur}~;
 \item \texttt{Graphics} : contient les différentes classes associées à l'affichage des instances ;
-\item \texttt{Resolution} : contient les différents algorithmes de résolution ;
+\item \texttt{Resolution} : contient les différents algorithmes de résolution sous forme de classes filles de la classe générique abstraite \texttt{Algo} ;
 \item \texttt{Main} : contient le main qui permet de lancer les algorithmes de test, ainsi que la définition des différents objets utilisés ;
 \end{itemize}
 
@@ -198,23 +198,30 @@ Les objets utilisés dans ce programme sont définis de la façon suivante :
 
 \subsection{Génération d'instances}
 
-Nous avons choisi d'implémenter deux méthodes principales de génération d'instances :
+Nous avons choisi d'implémenter deux classes de génération d'instances~:
 \begin{itemize}
 \item \texttt{Uniforme} : génère $n$ \texttt{Points} de façon aléatoire dans l'espace défini (en conservant des marges afin de ne pas avoir de points trop proches des bords, pour des raisons d'affichage) ;
-\item \texttt{Cluster} : LEO
+\item \texttt{Cluster} : détermine $n_{Cl}$  centres de clusters de façon aléatoire dans l'espace défini (en conservant une nouvelle fois des marges). On génère ensuite $n$ \texttt{Points} répartis uniformément sur les différents clusters. Les coordonnées de chaque point sont déterminés aléatoirement selon une loi normale, centrée sur le cluster correspondant et d'écart-type \texttt{sigma}. La taille des clusters est donc définie par \texttt{sigma} et est commune à tous les clusters. Elle est définie à la création de l'objet.
 \end{itemize}
 
 \subsection{Affichage des données}
 
-Afin d'avoir une représentation graphique claire des différentes instances et des résultats des algorithmes de résolution, nous avons choisi de définir une interface graphique à l'aide des outils \texttt{Swing}. Cela consiste en deux classes, \texttt{Fenetre} et \texttt{Panel}. \texttt{Fenetre} hérite de la classe \texttt{JFrame} et définit les caractéristiques de la fenêtre qui contiendra le \texttt{Panel}. \texttt{Panel} hérite de la classe \texttt{JPanel} et contient les méthodes associées au dessin des représentations. La méthode \texttt{paintComponent} dessine les différents éléments dans un \texttt{bufferGraphics}, attribut d'une image.\\
+Afin d'avoir une représentation graphique claire des différentes instances et des résultats des algorithmes de résolution, nous avons choisi de définir une interface graphique à l'aide des outils \texttt{Swing}. Cela consiste en deux classes, \texttt{Fenetre} et \texttt{Panel}. \texttt{Fenetre} hérite de la classe \texttt{JFrame} et définit les caractéristiques de la fenêtre qui contiendra le \texttt{Panel}. \texttt{Panel} hérite de la classe \texttt{JPanel} et contient les méthodes associées au dessin des représentations. La méthode \texttt{paintComponent} dessine les différents éléments dans un \texttt{bufferGraphics}, attribut d'une image.
 
 \subsection{Algorithmes de résolution}
 
-LEO
+Nous avons implémenté 4 algorithmes de résolution différents :
+\begin{itemize}
+\item \texttt{Exact} : Calcule exactement la solution optimale. L'algorithme teste naïvement toutes les solutions possibles récursivement et est donc très coûteux en temps.
+\item \texttt{DeuxApprox} (approximation) : On construit la solution centre par centre : on commence par un point quelconque puis on cherche parmi les points non encore choisis celui qui est le plus éloigné de notre ensemble de centres. On itère ainsi jusqu'à avoir choisi $k$ centres.
+\item \texttt{Dominant} (approximation)  : On commence par calculer la liste des distances entre tous les points, qu'on trie par ordre croissant. Ensuite, on prend la première distance et on cherche une solution : on construit notre liste centre par centre, en choisissant à chaque fois le point qui possède le plus de voisins non couverts (par des disques de rayon d). Après avoir choisi $k$ centres, on regarde si tous les points sont couverts. Si oui, on renvoie la solution, sinon, on passe à la distance suivante.
+\item \texttt{Descente} : Cet algorithme est un peu particulier : il améliore une solution déjà existante (en testant des permutations de centres).
+\end{itemize}
+
 
 \subsection{Conversion en fichier texte}
 
-Un standard d'export des instances a été défini afin de pouvoir sauvegarder et échanger différentes instances de test. Celui-ci est le suivant.\\
+Un standard d'export des instances a été défini afin de pouvoir sauvegarder et échanger différentes instances de test. Celui-ci est le suivant.
 
 \begin{lstlisting}
 nombre d'instances i
@@ -283,13 +290,23 @@ Supposons qu'il existe un algorithme d'$\alpha$-approximation pour le problème k
 
 \section{Méthodes de résolution}
 
-\subsection{DeuxApprox}
-
-\subsection{Descente}
-
 \subsection{Exact}
 
+Un premier algorithme est développé pour trouver la solution optimale d'une instance donnée, c'est à dire le choix de k centres qui minimise la distance maximale d'un point aux centres.\\
+
+On procède par récursivité : On construit une fonction qui renvoie une solution optimale (minimisant le rayon) pour une instance donnée sachant qu'une liste de centres est déjà fixée et qu'il reste un certain nombre de centres à choisir. Cette fonction fonctionne en testant tour à tour le choix des points restants et en s'appelant récursivement avec un centre de moins à choisir. On peut donc sélectionner le meilleur point et utiliser le résultat de l'appel récursif pour les points suivant.\\
+
+Notre solution principale est ainsi obtenue en appelant la fonction récursive avec le nombre de points à choisir original et avec une liste de points fixés vide. Cet algorithme est optimal mais très coûteux en terme de temps de calcul, ce qu'il le rend vite inutilisable.
+
+\subsection{DeuxApprox}
+
+Ce deuxième algorithme est une approximation qui permet de diminuer la complexité d'éxecution de l'algorithme exact. On construit la solution centre par centre : on commence par un point quelconque puis on cherche parmi les points non encore choisis celui qui est le plus éloigné de notre ensemble de centres. On itère ainsi jusqu'à avoir choisi tous les centres.\\
+
+Cet algorithme ne donne qu'un résultat approché (non optimal) mais est nettement moins gourmand en calcul, ce qui le rend largement plus utilisable que l'algorithme exact.
+
 \subsection{Dominant}
+
+\subsection{Descente}
 
 
 
