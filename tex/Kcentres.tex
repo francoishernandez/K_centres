@@ -377,6 +377,11 @@ width = 12cm
 
 % Dominant
 
+\addplot[color=red,mark=*] coordinates {(10,212) (25,258) (50,280) (100,309) (150,312) (200,310)};
+\addplot[color=red,mark=o] coordinates {(10,150) (25,182) (50,186) (100,199) (150,203) (200,213)};
+\addplot[color=red,mark=star] coordinates {(10,0) (25,107) (50,124) (100,141) (150,140) (200,145)};
+\addplot[color=red,mark=diamond*] coordinates {(25,47) (50,74) (100,89) (150,90) (200,95)};
+
 \end{axis}
 \end{tikzpicture}
 
@@ -387,7 +392,9 @@ width = 12cm
 
 On observe que pour des instances uniformes, quelque soit le nombre de centres, le rayon augmente avec le nombre de points. Cela peut s'expliquer par le fait que pour des instances uniformes, plus le nombre de points est élevé, moins il y a de "vide" entre les points, et la taille des disques devra donc être plus importante afin de tout couvrir.\\
 
-Par ailleurs,
+Par ailleurs, on remarque que l'algorithme \texttt{Dominant} permet d'avoir de bien meilleurs résultats que l'algorithme \texttt{DeuxApprox}, au détriment de la vitesse de calcul.\\
+
+Enfin, on peut aussi noter que, de façon évidente, pour un nombre de points égal au nombre de centres, le rayon approximé est bien nul.\\
 
 \subsection{Comparaison d'algorithmes - Instances en 10 clusters}
 
@@ -454,9 +461,7 @@ Pour des instances contenant 10 clusters, on observe également une augmentation 
 
 De façon assez logique, plus le nombre de centre est grand, plus le rayon est faible. Effectivement, un nombre de centre plus grand permet de couvrir autant de surface pour un rayon plus faible, et donc de contenir le même nombre d'instances pour un rayon plus faible.\\
 
-Par ailleurs, on remarque que l'algorithme \texttt{Dominant} permet d'avoir de bien meilleurs résultats que l'algorithme \texttt{DeuxApprox}, au détriment de la vitesse de calcul.
-
-\pagebreak
+Par ailleurs, comme pour les instances uniformes, on remarque que l'algorithme \texttt{Dominant} permet d'avoir de bien meilleurs résultats que l'algorithme \texttt{DeuxApprox}, au détriment de la vitesse de calcul.
 
 \subsection{Comparaison selon les types d'instances}
 
