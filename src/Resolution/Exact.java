@@ -5,12 +5,12 @@ import Main.*;
 public class Exact extends Algo {
 
 	public Solution resoudre(Instance I) {
-		// On procédera par récursivité sur 
+		// On procédera par récursivité sur le nombre de points restants à ajouter à notre solution
 		return appelRec(I, I.getPoints(), I.getK(), new ArrayList<Point>());
 	}
 
 	// appelRec renvoie une solution optimale (minimisant le rayon) pour l'instance I sachant
-	// qu'une liste sol de centres est déjà fixée et qu'il reste kRestant centres à choisir parmis la liste pointsRestants
+	// qu'une liste sol de centres est déjà fixée et qu'il reste kRestant centres à choisir parmi la liste pointsRestants
 	Solution appelRec(Instance I, ArrayList<Point> pointsRestants, int kRestant, ArrayList<Point> sol){
 		int nbRestants = pointsRestants.size();
 		if (kRestant == 0) {
