@@ -325,7 +325,9 @@ Cet algorithme est assez rapide et efficace, et il surtout toujours bon à appliq
 
 \section{Évaluation des performances}
 
-Dans la mesure ou la génération d?instance repose sur des processus aléatoires, les performances peuvent varier d?une instance à l?autre. En conséquence, toutes les mesures renseignées dans cette partie sont des moyennes de 10 relevés de résultats sur des instances différentes.\\
+Dans la mesure ou la génération d'instance repose sur des processus aléatoires, les performances peuvent varier d'une instance à l'autre. En conséquence, toutes les mesures renseignées dans cette partie sont des moyennes de 10 relevés de résultats sur des instances différentes.\\
+
+Afin de faciliter l'exploitation de ces mesures, nous avons mis en place un petit programme permettant d'exporter les tests effectués sur un certain nombre de valeurs du nombre de centres $k$ et du nombre de points $n$ dans des fichiers \texttt{.csv}. Ce code est présent dans le package \texttt{Main} dans la classe \texttt{Export.java}.\\
 
 \subsection{Comparaison d'algorithmes - Instances uniformes}
 
@@ -378,7 +380,7 @@ width = 12cm
 \end{axis}
 \end{tikzpicture}
 
-\caption{Rayon en fonction du nombre de points et du nombre de centres (Instances uniformes)}
+\caption{Rayon en fonction de $n$ et $k$ (Instances uniformes)}
 \end{center}
 \end{figure}
 
@@ -444,7 +446,7 @@ width = 13cm
 \end{axis}
 \end{tikzpicture}
 
-\caption{Rayon en fonction du nombre de points et du nombre de centres (10 clusters)}
+\caption{Rayon en fonction de $n$ et du $k$ (10 clusters)}
 \end{center}
 \end{figure}
 
@@ -508,7 +510,7 @@ width = 13cm
 \end{axis}
 \end{tikzpicture}
 
-\caption{Rayon en fonction du nombre de points et du nombre de centres - Uniforme vs. Clusters}
+\caption{Rayon en fonction de $n$ et $k$ - Uniforme vs. Clusters}
 \end{center}
 \end{figure}
 
