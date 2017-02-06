@@ -327,7 +327,7 @@ Cet algorithme est assez rapide et efficace, et il surtout toujours bon à appliq
 
 Dans la mesure ou la génération d?instance repose sur des processus aléatoires, les performances peuvent varier d?une instance à l?autre. En conséquence, toutes les mesures renseignées dans cette partie sont des moyennes de 10 relevés de résultats sur des instances différentes.\\
 
-Tests avec des instances uniformes
+\subsection{Comparaison d'algorithmes - Instances uniformes}
 
 
 \begin{figure}[!h]
@@ -337,10 +337,10 @@ Tests avec des instances uniformes
 xlabel={Nombre de points},
 ylabel={Rayon},
 %legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style = {at = {(0.5,-0.15)}, anchor=north},
+legend style = {at = {(0.5,-0.2)}, anchor=north},
 legend columns = 2,
-height= 12cm,
-width = 14cm
+height= 8cm,
+width = 12cm
 ]
 
 \addlegendimage{color=blue,thick,solid}
@@ -383,7 +383,11 @@ width = 14cm
 \end{figure}
 
 
-Tests pour 10 clusters de taille 15.
+On observe que pour des instances uniformes, quelque soit le nombre de centres, le rayon augmente avec le nombre de points. Cela peut s'expliquer par le fait que pour des instances uniformes, plus le nombre de points est élevé, moins il y a de "vide" entre les points, et la taille des disques devra donc être plus importante afin de tout couvrir.\\
+
+Par ailleurs,
+
+\subsection{Comparaison d'algorithmes - Instances en 10 clusters}
 
 \begin{figure}[!h]
 \begin{center}
@@ -392,10 +396,10 @@ Tests pour 10 clusters de taille 15.
 xlabel={Nombre de points},
 ylabel={Rayon},
 %legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style = {at = {(0.5,-0.15)}, anchor=north},
+legend style = {at = {(0.5,-0.2)}, anchor=north},
 legend columns = 2,
-height= 12cm,
-width = 14cm
+height= 8cm,
+width = 12cm
 ]
 
 \addlegendimage{color=blue,thick,solid}
@@ -440,11 +444,6 @@ width = 14cm
 \end{axis}
 \end{tikzpicture}
 
-
-On observe que pour des instances uniformes, quelque soit le nombre de centres, le rayon augmente avec le nombre de points. Cela peut s'expliquer par le fait que pour des instances uniformes, plus le nombre de points est élevé, moins il y a de "vide" entre les points, et la taille des disques devra donc être plus importante afin de tout couvrir.\\
-
-Par ailleurs,
-
 \caption{Rayon en fonction du nombre de points et du nombre de centres (10 clusters)}
 \end{center}
 \end{figure}
@@ -455,6 +454,9 @@ De façon assez logique, plus le nombre de centre est grand, plus le rayon est fa
 
 Par ailleurs, on remarque que l'algorithme \texttt{Dominant} permet d'avoir de bien meilleurs résultats que l'algorithme \texttt{DeuxApprox}, au détriment de la vitesse de calcul.
 
+\pagebreak
+
+\subsection{Comparaison selon les types d'instances}
 
 \begin{figure}[!h]
 \begin{center}
@@ -463,10 +465,10 @@ Par ailleurs, on remarque que l'algorithme \texttt{Dominant} permet d'avoir de b
 xlabel={Nombre de points},
 ylabel={Rayon},
 %legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style = {at = {(0.5,-0.15)}, anchor=north},
+legend style = {at = {(0.5,-0.2)}, anchor=north},
 legend columns = 2,
-height= 12cm,
-width = 14cm
+height= 8cm,
+width = 12cm
 ]
 
 \addlegendimage{color=blue,thick,solid}
