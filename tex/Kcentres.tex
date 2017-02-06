@@ -443,7 +443,7 @@ width = 14cm
 
 
 
-\section{Évaluation des performances}
+L'algorithme \texttt{Descente} doit être évalué différemment. En effet, il est utilisé pour améliorer des résultats obtenus avec d'autres algorithmes. On peut donc essayer d'observer son pouvoir d'amélioration. Pour fonctionner, il faut donner à l'algorithme un minimum d'opportunités de permutation. On choisira donc des instances à k=10 centres. En figure 4 nous pouvons observer ses effets sur l'algorithme \texttt{DeuxApprox} : c'est assez efficace ! On diminue le rayon de près de 10, et de manière assez notablement constante selon le nombre de noeuds. Cependant sur \texttt{Dominant}, c'est moins efficace. L'algorithme est déjà très performant, c'est donc difficile d'améliorer encore les résultats (c'est même presque toujours impossible pour des nombres faibles de points).\\
 
 \begin{figure}[!h]
 \begin{center}
@@ -451,8 +451,10 @@ width = 14cm
 \begin{axis}[grid=major,
 xlabel={Nombre de points},
 ylabel={Rayon},
-legend entries={sans descente, avec descente},
-legend style={at ={(1.35,0.8)}}
+legend entries={Avant descente, Après descente},
+legend style={at ={(0.9,0.9)}},
+height= 10cm,
+width = 12cm
 ]
 
 % k =10, cluster 10, 15, deuxApprox, moyennés sur 10 expériences
@@ -462,7 +464,7 @@ legend style={at ={(1.35,0.8)}}
 \end{axis}
 \end{tikzpicture}
 
-\caption{Léo}
+\caption{Performances de DeuxApprox avant et après utilisation de Descente.}
 \end{center}
 \end{figure}
 
@@ -472,8 +474,10 @@ legend style={at ={(1.35,0.8)}}
 \begin{axis}[grid=major,
 xlabel={Nombre de points},
 ylabel={Rayon},
-legend entries={sans descente, avec descente},
-legend style={at ={(1.35,0.8)}}
+legend entries={Avant descente, Après descente},
+legend style={at ={(0.9,0.9)}},
+height= 10cm,
+width = 12cm
 ]
 
 % k =10, cluster 10, 15, deuxApprox, moyennés sur 10 expériences
@@ -483,7 +487,7 @@ legend style={at ={(1.35,0.8)}}
 \end{axis}
 \end{tikzpicture}
 
-\caption{Léo}
+\caption{Performances de Dominant avant et après utilisation de Descente.}
 \end{center}
 \end{figure}
 
