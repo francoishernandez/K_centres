@@ -218,6 +218,7 @@ Nous avons implémenté 4 algorithmes de résolution différents \textit{(détails en
 \item \texttt{Descente} : Cet algorithme est un peu particulier : il améliore une solution déjà existante (en testant des permutations de centres).
 \end{itemize}
 
+\pagebreak
 
 \subsection{Conversion en fichier texte}
 
@@ -243,7 +244,7 @@ La méthode \texttt{createFile} de la classe \texttt{Instance} permet de créer de
 La classe \texttt{Importer} du package \texttt{Generation} permet de lire de tels fichiers à l'aide des classes \texttt{FileReader} et \texttt{BufferedReader} de Java.\\
 
 %------------------------------------------------
-\pagebreak
+%\pagebreak
 
 \section{Théorie, NP-complétude et approximation}
 
@@ -324,7 +325,10 @@ Cet algorithme est assez rapide et efficace, et il surtout toujours bon à appliq
 
 \section{Évaluation des performances}
 
-Tests pour 10 clusters de taille 15.
+Dans la mesure ou la génération d?instance repose sur des processus aléatoires, les performances peuvent varier d?une instance à l?autre. En conséquence, toutes les mesures renseignées dans cette partie sont des moyennes de 10 relevés de résultats sur des instances différentes.\\
+
+\subsection{Comparaison d'algorithmes - Instances uniformes}
+
 
 \begin{figure}[!h]
 \begin{center}
@@ -333,17 +337,17 @@ Tests pour 10 clusters de taille 15.
 xlabel={Nombre de points},
 ylabel={Rayon},
 %legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style = {at = {(0.5,-0.15)}, anchor=north},
+legend style = {at = {(0.5,-0.2)}, anchor=north},
 legend columns = 2,
-height= 12cm,
-width = 14cm
+height= 8cm,
+width = 12cm
 ]
 
 \addlegendimage{color=blue,thick,solid}
 \addlegendentry{DeuxApprox}
+%\addlegendimage{color=red,thick,solid}
+%\addlegendentry{DeuxApprox avec Descente}
 \addlegendimage{color=red,thick,solid}
-\addlegendentry{DeuxApprox avec Descente}
-\addlegendimage{color=green,thick,solid}
 \addlegendentry{Dominant}
 \addlegendimage{mark=*}
 \addlegendentry{$k=3$}
@@ -356,25 +360,84 @@ width = 14cm
 
 % DeuxApprox
 
-\addplot[color=blue,mark=*] coordinates {(10,257) (25,353) (50,278) (100,290) (150,299) (175,327) (200,293) (500,321)};
-\addplot[color=blue,mark=o] coordinates {(10,177) (25,201) (50,202) (100,204) (150,211) (175,233) (200,211) (500,220)};
-\addplot[color=blue,mark=star] coordinates {(10,0) (25,116) (50,58) (100,67) (150,68) (175,115) (200,75) (500,82)};
-\addplot[color=blue,mark=diamond*] coordinates {(25,22) (50,30) (100,39) (150,42) (175,52) (200,44) (500,53)};
+\addplot[color=blue,mark=*] coordinates {(10,269) (25,352) (50,378) (100,416) (150,415) (175,383) (200,365) };
+\addplot[color=blue,mark=o] coordinates {(10,157) (25,207) (50,243) (100,271) (150,281) (175,280) (200,270) };
+\addplot[color=blue,mark=star] coordinates {(10,0) (25,124) (50,150) (100,167) (150,173) (175,173) (200,174) };
+\addplot[color=blue,mark=diamond*] coordinates {(25,39) (50,88) (100,100) (150,110) (175,111) (200,111)};
 
 
 % DeuxApprox avec Descente
 
-\addplot[color=red,mark=*] coordinates {(10,153) (25,229) (50,152) (100,158) (150,156) (175,198) (200,159) (500,164)};
-\addplot[color=red,mark=o] coordinates {(10,78) (25,151) (50,85) (100,85) (150,93) (175,156) (200,86) (500,100)};
-\addplot[color=red,mark=star] coordinates {(10,0) (25,66) (50,46) (100,48) (150,51) (175,69) (200,56) (500,63)};
-\addplot[color=red,mark=diamond*] coordinates {(25,21) (50,27) (100,32) (150,35) (175,40) (200,38) (500,42)};
+%\addplot[color=red,mark=*] coordinates  {(10,225) (25,252) (50,272) (100,286) (150,294) (175,292) (200,294) (500,302)};
+%\addplot[color=red,mark=o] coordinates {(10,164) (25,185) (50,193) (100,207) (150,208) (175,201) (200,228) (500,218)};
+%\addplot[color=red,mark=star] coordinates {(10,0) (25,118) (50,134) (100,139) (150,154) (175,146) (200,152) (500,158)};
+%\addplot[color=red,mark=diamond*] coordinates {(25,48) (50,83) (100,97) (150,100) (175,100) (200,105) (500,106)};
 
 % Dominant
 
-\addplot[color=green,mark=*] coordinates {(10,177) (25,245) (50,175) (100,179) (150,183) (200,200)};
-\addplot[color=green,mark=o] coordinates {(10,99) (25,151) (50,102) (100,103) (150,104) (200,111)};
-\addplot[color=green,mark=star] coordinates {(10,0) (25,71) (50,42) (100,47) (150,49) (200,54)};
-\addplot[color=green,mark=diamond*] coordinates {(25,22) (50,24) (100,28) (150,31) (200,32)};
+\end{axis}
+\end{tikzpicture}
+
+\caption{Rayon en fonction du nombre de points et du nombre de centres (Instances uniformes)}
+\end{center}
+\end{figure}
+
+
+On observe que pour des instances uniformes, quelque soit le nombre de centres, le rayon augmente avec le nombre de points. Cela peut s'expliquer par le fait que pour des instances uniformes, plus le nombre de points est élevé, moins il y a de "vide" entre les points, et la taille des disques devra donc être plus importante afin de tout couvrir.\\
+
+Par ailleurs,
+
+\subsection{Comparaison d'algorithmes - Instances en 10 clusters}
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[grid=major,
+xlabel={Nombre de points},
+ylabel={Rayon},
+%legend entries={k = 3, k = 5, k = 10, k = 20},
+legend style = {at = {(0.5,-0.2)}, anchor=north},
+legend columns = 2,
+height= 8cm,
+width = 12cm
+]
+
+\addlegendimage{color=blue,thick,solid}
+\addlegendentry{DeuxApprox}
+%\addlegendimage{color=red,thick,solid}
+%\addlegendentry{DeuxApprox avec Descente}
+\addlegendimage{color=red,thick,solid}
+\addlegendentry{Dominant}
+\addlegendimage{mark=*}
+\addlegendentry{$k=3$}
+\addlegendimage{mark=o}
+\addlegendentry{$k=5$}
+\addlegendimage{mark=star}
+\addlegendentry{$k=10$}
+\addlegendimage{mark=diamond*}
+\addlegendentry{$k=20$}
+
+% DeuxApprox
+
+\addplot[color=blue,mark=*] coordinates {(10,257) (25,353) (50,278) (100,290) (150,299) (175,327) (200,293) };
+\addplot[color=blue,mark=o] coordinates {(10,177) (25,201) (50,202) (100,204) (150,211) (175,233) (200,211) };
+\addplot[color=blue,mark=star] coordinates {(10,0) (25,116) (50,58) (100,67) (150,68) (175,115) (200,75) };
+\addplot[color=blue,mark=diamond*] coordinates {(25,22) (50,30) (100,39) (150,42) (175,52) (200,44) };
+
+
+% DeuxApprox avec Descente
+
+%\addplot[color=red,mark=*] coordinates {(10,153) (25,229) (50,152) (100,158) (150,156) (175,198) (200,159) (500,164)};
+%\addplot[color=red,mark=o] coordinates {(10,78) (25,151) (50,85) (100,85) (150,93) (175,156) (200,86) (500,100)};
+%\addplot[color=red,mark=star] coordinates {(10,0) (25,66) (50,46) (100,48) (150,51) (175,69) (200,56) (500,63)};
+%\addplot[color=red,mark=diamond*] coordinates {(25,21) (50,27) (100,32) (150,35) (175,40) (200,38) (500,42)};
+
+% Dominant
+
+\addplot[color=red,mark=*] coordinates {(10,177) (25,245) (50,175) (100,179) (150,183) (200,200)};
+\addplot[color=red,mark=o] coordinates {(10,99) (25,151) (50,102) (100,103) (150,104) (200,111)};
+\addplot[color=red,mark=star] coordinates {(10,0) (25,71) (50,42) (100,47) (150,49) (200,54)};
+\addplot[color=red,mark=diamond*] coordinates {(25,22) (50,24) (100,28) (150,31) (200,32)};
 
 
 
@@ -385,8 +448,15 @@ width = 14cm
 \end{center}
 \end{figure}
 
-Tests avec des instances uniformes
+Pour des instances contenant 10 clusters, on observe également une augmentation du rayon en fonction du nombre de points, mais plus légère que pour les instances uniformes. Cela est dû au fait que les points, même plus nombreux, sont concentrés autour de clusters d'une taille fixe.\\
 
+De façon assez logique, plus le nombre de centre est grand, plus le rayon est faible. Effectivement, un nombre de centre plus grand permet de couvrir autant de surface pour un rayon plus faible, et donc de contenir le même nombre d'instances pour un rayon plus faible.\\
+
+Par ailleurs, on remarque que l'algorithme \texttt{Dominant} permet d'avoir de bien meilleurs résultats que l'algorithme \texttt{DeuxApprox}, au détriment de la vitesse de calcul.
+
+\pagebreak
+
+\subsection{Comparaison selon les types d'instances}
 
 \begin{figure}[!h]
 \begin{center}
@@ -395,18 +465,18 @@ Tests avec des instances uniformes
 xlabel={Nombre de points},
 ylabel={Rayon},
 %legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style = {at = {(0.5,-0.15)}, anchor=north},
+legend style = {at = {(0.5,-0.2)}, anchor=north},
 legend columns = 2,
-height= 12cm,
-width = 14cm
+height= 8cm,
+width = 12cm
 ]
 
 \addlegendimage{color=blue,thick,solid}
-\addlegendentry{DeuxApprox}
+\addlegendentry{Uniforme}
+%\addlegendimage{color=red,thick,solid}
+%\addlegendentry{DeuxApprox avec Descente}
 \addlegendimage{color=red,thick,solid}
-\addlegendentry{DeuxApprox avec Descente}
-\addlegendimage{color=green,thick,solid}
-\addlegendentry{Dominant}
+\addlegendentry{10 Clusters}
 \addlegendimage{mark=*}
 \addlegendentry{$k=3$}
 \addlegendimage{mark=o}
@@ -416,29 +486,34 @@ width = 14cm
 \addlegendimage{mark=diamond*}
 \addlegendentry{$k=20$}
 
-% DeuxApprox
+% DeuxApprox, uniforme
 
-\addplot[color=blue,mark=*] coordinates {(10,269) (25,352) (50,378) (100,416) (150,415) (175,383) (200,365) (500,419)};
-\addplot[color=blue,mark=o] coordinates {(10,157) (25,207) (50,243) (100,271) (150,281) (175,280) (200,270) (500,279)};
-\addplot[color=blue,mark=star] coordinates {(10,0) (25,124) (50,150) (100,167) (150,173) (175,173) (200,174) (500,182)};
-\addplot[color=blue,mark=diamond*] coordinates {(25,39) (50,88) (100,100) (150,110) (175,111) (200,111) (500,117)};
+\addplot[color=blue,mark=*] coordinates {(10,269) (25,352) (50,378) (100,416) (150,415) (175,383) (200,365) };
+\addplot[color=blue,mark=o] coordinates {(10,157) (25,207) (50,243) (100,271) (150,281) (175,280) (200,270) };
+\addplot[color=blue,mark=star] coordinates {(10,0) (25,124) (50,150) (100,167) (150,173) (175,173) (200,174) };
+\addplot[color=blue,mark=diamond*] coordinates {(25,39) (50,88) (100,100) (150,110) (175,111) (200,111)};
 
 
-% DeuxApprox avec Descente
 
-\addplot[color=red,mark=*] coordinates  {(10,225) (25,252) (50,272) (100,286) (150,294) (175,292) (200,294) (500,302)};
-\addplot[color=red,mark=o] coordinates {(10,164) (25,185) (50,193) (100,207) (150,208) (175,201) (200,228) (500,218)};
-\addplot[color=red,mark=star] coordinates {(10,0) (25,118) (50,134) (100,139) (150,154) (175,146) (200,152) (500,158)};
-\addplot[color=red,mark=diamond*] coordinates {(25,48) (50,83) (100,97) (150,100) (175,100) (200,105) (500,106)};
 
-% Dominant
+% DeuxApprox, cluster
+
+\addplot[color=red,mark=*] coordinates {(10,257) (25,353) (50,278) (100,290) (150,299) (175,327) (200,293) };
+\addplot[color=red,mark=o] coordinates {(10,177) (25,201) (50,202) (100,204) (150,211) (175,233) (200,211) };
+\addplot[color=red,mark=star] coordinates {(10,0) (25,116) (50,58) (100,67) (150,68) (175,115) (200,75) };
+\addplot[color=red,mark=diamond*] coordinates {(25,22) (50,30) (100,39) (150,42) (175,52) (200,44) };
+
+
 
 \end{axis}
 \end{tikzpicture}
 
-\caption{Rayon en fonction du nombre de points et du nombre de centres (Instances uniformes)}
+\caption{Rayon en fonction du nombre de points et du nombre de centres - Uniforme vs. Clusters}
 \end{center}
 \end{figure}
+
+On observe que pour les instances uniformes le rayon est supérieur à celui pour les instances en clusters. Cela s'explique par le fait que pour ces dernières, les points sont regroupés en clusters, et donc par définition répartis de façon moins éparse dans l'espace.\\
+
 
 
 
