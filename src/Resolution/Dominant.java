@@ -4,7 +4,7 @@ import java.util.Collections;
 
 import Main.*;
 
-public class Dominant {
+public class Dominant extends Algo {
 
 	public Solution resoudre(Instance I) {
 		
