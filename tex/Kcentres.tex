@@ -315,28 +315,7 @@ Cet algorithme ne donne qu'un résultat approché (non optimal) mais est nettement
 
 \section{Évaluation des performances}
 
-\begin{figure}[!h]
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[grid=major,
-xlabel={Nombre de points},
-ylabel={Rayon},
-legend entries={k = 3, k = 5, k = 10, k = 20},
-legend style={at ={(1.35,0.8)}}
-]
-
-\addplot coordinates {(10,260) (25,275) (50,267) (100,245) (150,230) (175,289) (200,276) (500,290)};
-\addplot coordinates {(10,167) (25,211) (50,213) (100,188) (150,161) (175,208) (200,214) (500,211)};
-\addplot coordinates {(10,0) (25,127) (50,136) (100,128) (150,145) (175,143) (200,140) (500,142)};
-\addplot coordinates {(25,59) (50,82) (100,78) (150,65) (175,96) (200,89) (500,93)};
-
-\end{axis}
-\end{tikzpicture}
-
-\caption{Rayon en fonction du nombre de points et du nombre de centres}
-\end{center}
-\end{figure}
-
+Tests pour 10 clusters de taille 15.
 
 \begin{figure}[!h]
 \begin{center}
@@ -406,6 +385,53 @@ legend style={at ={(1.35,0.8)}}
 \end{center}
 \end{figure}
 
+
+Tests avec des instances uniformes
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[grid=major,
+xlabel={Nombre de points},
+ylabel={Rayon},
+legend entries={k = 3, k = 5, k = 10, k = 20},
+legend style={at ={(1.35,0.8)}}
+]
+
+\addplot coordinates {(10,225) (25,252) (50,272) (100,286) (150,294) (175,292) (200,294) (500,302)};
+\addplot coordinates {(10,164) (25,185) (50,193) (100,207) (150,208) (175,201) (200,228) (500,218)};
+\addplot coordinates {(10,0) (25,118) (50,134) (100,139) (150,154) (175,146) (200,152) (500,158)};
+\addplot coordinates {(25,48) (50,83) (100,97) (150,100) (175,100) (200,105) (500,106)};
+
+\end{axis}
+\end{tikzpicture}
+
+\caption{Rayon en fonction du nombre de points et du nombre de centres - Descente 2}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[grid=major,
+xlabel={Nombre de points},
+ylabel={Rayon},
+legend entries={k = 3, k = 5, k = 10, k = 20},
+legend style={at ={(1.35,0.8)}}
+]
+
+\addplot coordinates {(10,269) (25,352) (50,378) (100,416) (150,415) (175,383) (200,365) (500,419)};
+\addplot coordinates {(10,157) (25,207) (50,243) (100,271) (150,281) (175,280) (200,270) (500,279)};
+\addplot coordinates {(10,0) (25,124) (50,150) (100,167) (150,173) (175,173) (200,174) (500,182)};
+\addplot coordinates {(25,39) (50,88) (100,100) (150,110) (175,111) (200,111) (500,117)};
+
+\end{axis}
+\end{tikzpicture}
+
+\caption{Rayon en fonction du nombre de points et du nombre de centres - DeuxApprox 2}
+\end{center}
+\end{figure}
 
 
 %------------------------------------------------
