@@ -15,7 +15,7 @@ public class DeuxApprox extends Algo {
 		
 		// Tant qu'on a pas K centres, on rajoute des centres à notre solution :
 		for (int i = 1; i<I.getK(); i++){
-			// On cherche parmis les noeuds restants le noeud le plus éloigné de notre ensemble de centres 
+			// On cherche parmis les noeuds non encore choisis le noeud le plus éloigné de notre ensemble de centres 
 			int distanceMax = 0;
 			int indiceMax = 0;
 			for (int j = 0; j<pointsAtraiter.size(); j++){
