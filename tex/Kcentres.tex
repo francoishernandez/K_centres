@@ -22,6 +22,7 @@
 \documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
 
 \usepackage{standalone}
+\usepackage{amsmath}
 
 \usepackage[a4paper,left=3cm,right=3cm]{geometry}
 
@@ -160,7 +161,7 @@ Le problème des K-centres est un problème d'optimisation combinatoire. Le problè
 
 Il existe plusieurs définitions des problèmes K-centres. Ici, nous considérons la formulation suivante. Supposons un ensemble E de $n$ points dans un espace vectoriel ou un graphe complet muni d'une fonction de distance satisfaisant l'inégalité triangulaire. Il s'agit de trouver k "centroids" afin de minimiser la distance maximale entre un point de E et le centre le plus proche.\\
 
-Ce problème de décision est NP-complet.\\
+Ce problème, dans sa forme problème de décision, est NP-complet.\\
 
 Au cours de ce projet, nous avons mis en place un programme en Java constituant une représentation du problème, et proposant différents algorithmes de résolution sur différents ensembles d'instances.\\
 
@@ -239,6 +240,43 @@ La classe \texttt{Importer} du package \texttt{Generation} permet de lire de tel
 
 \section{Théorie, NP-complétude et approximation}
 
+Le problème K-centre, dans sa forme de problème de décision, est NP-complet, c'est à dire qu'il suit les conditions suivantes :
+\begin{itemize}
+\item il est possible de vérifier une solution en temps polynomial ; 
+\item il est possible de le réduire en un problème de la classe NP par une réduction polynomiale.
+\end{itemize}
+
+\subsection{Problème d'ensemble dominant}
+
+Soit un graphe $G = (S,A)$. Un ensemble dominant pour G est un sous-ensemble $D$ de l'ensemble des sommets $S$ de $G$ tel que tout sommet qui n'appartient pas au dominant soit adjacent à un de ses sommets.\\
+
+Le problème d'ensemble dominant consiste à déterminer, selon $G$ et un entier naturel $k$, si $G$ possède un ensemble dominant d'au plus $k$ sommets.\\
+
+$dom(G)$ est la taille de l'ensemble dominant le plus petit possible pour le graphe $G$. Trouver un ensemble dominant de taille minimale est un problème NP-complet. Il est possible de réduire le problème K-centre en un problème d'ensemble dominant afin de démontrer sa NP-complétude.\\
+
+\subsection{Réduction}
+
+Soit un graphe non orienté $G = (S,A)$ pour le problème de l'ensemble dominant. Considérons le graphe $G' = (S, S \times S)$ muni de la fonction de poids $d : S \times S \rightarrow \mathbb{R}$ pour ses arrêtes.
+
+\begin{align}
+  d(u,v)=
+  \begin{cases}
+    1  & \text{si }  (u,v) \in A\\
+    2alpha & \text{sinon } \\
+  \end{cases}
+\end{align}
+
+Supposons que G ait un ensemble dominant de taille inférieure ou égale à $k$.
+
+\begin{center}
+$dom(G) \leq k$
+\end{center}
+
+Dans ce cas, il existe une solution de poids $1$ au problème k-centre pour $G'$. Un algorithme d'$\alpha$-approximation fournit une solution de poids inférieur ou égal à $\alpha$, avec $\alpha \geq 1$ le facteur d'approximation.\\
+
+S'il n'existe pas un tel ensemble dominant dans $G$, alors toutes les instances de k-centre auront un poids supérieur ou égal à $2\alpha$, donc supérieur à $\alpha$.\\
+
+Supposons qu'il existe un algorithme d'$\alpha$-approximation pour le problème k-centre. Appliquons cet algorithme de décision sur $G'$. La solution a un poids inférieur ou égal à $\alpha$, donc il existe un ensemble dominant de taille inférieure ou égale à $k$. Autrement, il n'existe pas de tel ensemble dominant. Il y a donc contradiction. Le problème k-centre peut se réduire au problème de l'ensemble dominant, donc il est NP-complet.
 
 %------------------------------------------------
 %\pagebreak
@@ -281,6 +319,76 @@ legend style={at ={(1.35,0.8)}}
 \caption{Rayon en fonction du nombre de points et du nombre de centres}
 \end{center}
 \end{figure}
+
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[grid=major,
+xlabel={Nombre de points},
+ylabel={Rayon},
+legend entries={k = 3, k = 5, k = 10, k = 20},
+legend style={at ={(1.35,0.8)}}
+]
+
+\addplot coordinates {(10,153) (25,229) (50,152) (100,158) (150,156) (175,198) (200,159) (500,164)};
+\addplot coordinates {(10,78) (25,151) (50,85) (100,85) (150,93) (175,156) (200,86) (500,100)};
+\addplot coordinates {(10,0) (25,66) (50,46) (100,48) (150,51) (175,69) (200,56) (500,63)};
+\addplot coordinates {(25,21) (50,27) (100,32) (150,35) (175,40) (200,38) (500,42)};
+
+\end{axis}
+\end{tikzpicture}
+
+\caption{Rayon en fonction du nombre de points et du nombre de centres - Descente 1}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[grid=major,
+xlabel={Nombre de points},
+ylabel={Rayon},
+legend entries={k = 3, k = 5, k = 10, k = 20},
+legend style={at ={(1.35,0.8)}}
+]
+
+\addplot coordinates {(10,257) (25,353) (50,278) (100,290) (150,299) (175,327) (200,293) (500,321)};
+\addplot coordinates {(10,177) (25,201) (50,202) (100,204) (150,211) (175,233) (200,211) (500,220)};
+\addplot coordinates {(10,0) (25,116) (50,58) (100,67) (150,68) (175,115) (200,75) (500,82)};
+\addplot coordinates {(25,22) (50,30) (100,39) (150,42) (175,52) (200,44) (500,53)};
+
+\end{axis}
+\end{tikzpicture}
+
+\caption{Rayon en fonction du nombre de points et du nombre de centres - DeuxApprox 1}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[!h]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[grid=major,
+xlabel={Nombre de points},
+ylabel={Rayon},
+legend entries={k = 3, k = 5, k = 10, k = 20},
+legend style={at ={(1.35,0.8)}}
+]
+
+\addplot coordinates {(10,177) (25,245) (50,175) (100,179) (150,183) (200,200)};
+\addplot coordinates {(10,99) (25,151) (50,102) (100,103) (150,104) (200,111)};
+\addplot coordinates {(10,0) (25,71) (50,42) (100,47) (150,49) (200,54)};
+\addplot coordinates {(25,22) (50,24) (100,28) (150,31) (200,32)};
+
+\end{axis}
+\end{tikzpicture}
+
+\caption{Rayon en fonction du nombre de points et du nombre de centres - Dominant 1}
+\end{center}
+\end{figure}
+
 
 
 %------------------------------------------------
