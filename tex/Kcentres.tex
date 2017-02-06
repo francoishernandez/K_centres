@@ -197,10 +197,10 @@ Les objets utilisés dans ce programme sont définis de la façon suivante :
 
 \subsection{Génération d'instances}
 
-Nous avons choisi d'implémenter deux méthodes principales de génération d'instances :
+Nous avons choisi d'implémenter deux méthodes principales de génération d'instances~:
 \begin{itemize}
 \item \texttt{Uniforme} : génère $n$ \texttt{Points} de façon aléatoire dans l'espace défini (en conservant des marges afin de ne pas avoir de points trop proches des bords, pour des raisons d'affichage) ;
-\item \texttt{Cluster} : LEO
+\item \texttt{Cluster} : détermine $n_{Cl}$  centres de clusters de façon aléatoire dans l'espace défini (en conservant une nouvelle fois des marges). On génère ensuite $n$ \texttt{Points} répartis uniformément sur les différents clusters. Les coordonnées de chaque point sont déterminés aléatoirement selon une loi normale, centrée sur le cluster correspondant et d'écart-type \texttt{sigma}. La taille des clusters est donc définie par \texttt{sigma} et est commune à tous les clusters. Elle est définie à la création de l'objet.
 \end{itemize}
 
 \subsection{Affichage des données}
