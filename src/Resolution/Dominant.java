@@ -36,13 +36,13 @@ public class Dominant {
 			ArrayList<Point> C = new ArrayList<Point>();
 			
 			// Pour trouver une solution on construit notre liste centre par centre :
-			// On choisit à chaque fois le point qui possède le plus de voisins (à la distance d) non couverts
+			// On choisit à chaque fois le point qui possède le plus de voisins non couverts (par des disques de rayon d)
 			for (int k=0; k<I.getK(); k++){
 				Point e = I.maxSommetsNonCouverts(C, d);
 				C.add(e);
 			}
 			
-			// Une fois notre liste de K centres construite, on vérifie si elle est solution de l'instance à la distance d
+			// Une fois notre liste de K centres construite, on regarde si tous les points sont couverts
 			if (I.estCouvert(C, d)){
 				// Si oui, on peut calculer le score exact de la solution (meilleur ou égal à la distance d) et la renvoyer
 				int rayon = I.calculRayon(C);
