@@ -180,9 +180,9 @@ Nous avons choisi d'implémenter ce problème dans le langage Java. Nous avons mis
 
 Le programme comporte ainsi les packages suivants :
 \begin{itemize}
-\item \texttt{Generation} : contient les différentes classes de génération d'instances, ainsi que celle associée à la lecture des fichiers .txt ;
+\item \texttt{Generation} : contient les différentes classes de génération d'instances ainsi que celle associée à la lecture des fichiers .txt, toutes héritant de la classe abstraite \texttt{Generateur}~;
 \item \texttt{Graphics} : contient les différentes classes associées à l'affichage des instances ;
-\item \texttt{Resolution} : contient les différents algorithmes de résolution ;
+\item \texttt{Resolution} : contient les différents algorithmes de résolution sous forme de classes filles de la classe générique abstraite \texttt{Algo} ;
 \item \texttt{Main} : contient le main qui permet de lancer les algorithmes de test, ainsi que la définition des différents objets utilisés ;
 \end{itemize}
 
@@ -209,11 +209,11 @@ Afin d'avoir une représentation graphique claire des différentes instances et de
 
 \subsection{Algorithmes de résolution}
 
-LEO
+
 
 \subsection{Conversion en fichier texte}
 
-Un standard d'export des instances a été défini afin de pouvoir sauvegarder et échanger différentes instances de test. Celui-ci est le suivant.\\
+Un standard d'export des instances a été défini afin de pouvoir sauvegarder et échanger différentes instances de test. Celui-ci est le suivant.
 
 \begin{lstlisting}
 nombre d'instances i
